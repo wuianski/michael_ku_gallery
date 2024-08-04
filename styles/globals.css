@@ -16,4 +16,24 @@ a {
   text-decoration: none;
 }
 
+/* .slick-next::before {
+  content: '>';
+  font-size: 30px;
+  color: #000 !important;
+} */
 
+
+.yarl__slide_captions_container{
+  background:none !important;
+}
+.yarl__slide_description{
+  color:#000 !important;
+  font-size: 12px !important;
+}
+.yarl__button{
+  color: #000 !important;
+}
+.yarl__icon{
+  width: 38px !important;
+  height: 38spx !important;
+}

@@ -5,6 +5,9 @@ import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
 const noto_serif = Noto_Serif({ subsets: ["latin"] });
 const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
 const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+/* PhotoGallery */
+import PhotoGalleryTW from "@/components/photo_gallery/PhotoGalleryTW";
+import PhotoGalleryEN from "@/components/photo_gallery/PhotoGalleryEN";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -21,7 +24,7 @@ export default function Artworks({ useLang, artworks }) {
       <Box pb={2} sx={{ color: "#666" }}>
         {useLang ? "作品" : "Artworks"}
       </Box>
-      <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 12, md: 12 }}>
+      {/* <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 12, md: 12 }}>
         {artworks.map((a, index) => (
           <Grid item xs={6} md={3} key={index}>
             <Item>
@@ -64,7 +67,14 @@ export default function Artworks({ useLang, artworks }) {
             </Item>
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
+      <Box sx={{ fontSize: 12 }}>
+        {useLang ? (
+          <PhotoGalleryTW photos={artworks} />
+        ) : (
+          <PhotoGalleryEN photos={artworks} />
+        )}
+      </Box>
     </>
   );
 }

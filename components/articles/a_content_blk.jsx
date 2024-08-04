@@ -13,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {},
 }));
 
-export default function NContentBlock({ useLang, news }) {
+export default function AContentBlock({ useLang, articles }) {
   return (
     <>
       {/* Exhibition Content */}
@@ -29,14 +29,14 @@ export default function NContentBlock({ useLang, news }) {
                 pb={1}
                 pt={2}
               >
-                {news.name_tw}
+                {articles.name_tw}
               </Box>
-              <Box sx={{ fontSize: 18 }}>{news.title_tw}</Box>
+              <Box sx={{ fontSize: 18 }}>{articles.title_tw}</Box>
               <Box sx={{ fontSize: 12, color: "#666" }}>
-                {news.begin_exhibition} - {news.end_exhibition}
+                {articles.begin_exhibition} - {articles.end_exhibition}
               </Box>
               <Box sx={{ fontSize: 14 }} pt={2}>
-                {news.content_tw}
+                {articles.content_tw}
               </Box>
             </>
           ) : (
@@ -49,21 +49,21 @@ export default function NContentBlock({ useLang, news }) {
                 pb={1}
                 pt={2}
               >
-                {news.name_en}
+                {articles.name_en}
               </Box>
-              <Box sx={{ fontSize: 18 }}>{news.title_en}</Box>
+              <Box sx={{ fontSize: 18 }}>{articles.title_en}</Box>
               <Box sx={{ fontSize: 12, color: "#666" }}>
-                {news.begin_exhibition} - {news.end_exhibition}
+                {articles.begin_exhibition} - {articles.end_exhibition}
               </Box>
               <Box sx={{ fontSize: 14 }} pt={2}>
-                {news.content_en}
+                {articles.content_en}
               </Box>
             </>
           )}
         </Item>
         <Item sx={{ width: { xs: "100%", sm: "50%" } }}>
           <Box>
-            <SliderHalfW imgs={news.imgs} />
+            <SliderHalfW imgs={articles.imgs} />
           </Box>
         </Item>
       </Stack>

@@ -28,8 +28,12 @@ const artworks = [
     title_tw: "看我舞動",
     title_en: "Dance with Me",
     img: "/img/fake_data/luo.jpg",
+    width: 1707,
+    height: 2560,
     begin_exhibition: "2021-10-01",
     end_exhibition: "2021-12-12",
+    caption_tw: "羅智信，不存在的蝸牛，2019\n\n展覽現場",
+    caption_en: "Luo Jr-shin, snails(not included), 2019\n\nInstallation view",
   },
   {
     name_tw: "韋嘉",
@@ -37,8 +41,12 @@ const artworks = [
     title_tw: "韋嘉 2017-2021",
     title_en: "Wei Jia 2017-2021",
     img: "/img/fake_data/5-韋嘉-《河灣》-2019-丙烯畫布-275x200cm-1.jpg",
+    width: 1396,
+    height: 1920,
     begin_exhibition: "2021-10-01",
     end_exhibition: "2021-12-12",
+    caption_tw: "羅智信，不存在的蝸牛，2019\n\n展覽現場",
+    caption_en: "Luo Jr-shin, snails(not included), 2019\n\nInstallation view",
   },
   {
     name_tw: "劉安民",
@@ -46,8 +54,12 @@ const artworks = [
     title_tw: "《飼養箱》（旺來）、（鳥巢）、（苔球）",
     title_en: "Glorious",
     img: "/img/fake_data/2-劉安民-《池塘松尾芭蕉》-2019-壓克力石墨-152.4x182.9cm.jpg",
+    width: 1920,
+    height: 1602,
     begin_exhibition: "2021-10-01",
     end_exhibition: "2021-12-12",
+    caption_tw: "羅智信，不存在的蝸牛，2019\n\n展覽現場",
+    caption_en: "Luo Jr-shin, snails(not included), 2019\n\nInstallation view",
   },
   {
     name_tw: "蔣勳",
@@ -55,36 +67,52 @@ const artworks = [
     title_tw: "漂流城市 - 臺北市立美術館",
     title_en: "The Beauty of Heaven and Earth",
     img: "/img/fake_data/7-蔣勳《雙松》-2019-水墨設色紙本-37.8x33.5cm.jpg",
+    width: 1755,
+    height: 1920,
     begin_exhibition: "2021-10-01",
     end_exhibition: "2021-12-12",
+    caption_tw: "羅智信，不存在的蝸牛，2019\n\n展覽現場",
+    caption_en: "Luo Jr-shin, snails(not included), 2019\n\nInstallation view",
   },
   {
     name_tw: "韋嘉",
     name_en: "Wei Jia",
     title_tw: "韋嘉 2017-2021",
     title_en: "Wei Jia 2017-2021",
-    img: "/img/fake_data/5-韋嘉-《河灣》-2019-丙烯畫布-275x200cm-1.jpg",
+    img: "/img/fake_data/MKG-5-2.jpg",
+    width: 1396,
+    height: 1920,
     begin_exhibition: "2021-10-01",
     end_exhibition: "2021-12-12",
+    caption_tw: "羅智信，不存在的蝸牛，2019\n\n展覽現場",
+    caption_en: "Luo Jr-shin, snails(not included), 2019\n\nInstallation view",
   },
-  {
-    name_tw: "劉安民",
-    name_en: "Lao Lianben",
-    title_tw: "光華",
-    title_en: "Glorious",
-    img: "/img/fake_data/2-劉安民-《池塘松尾芭蕉》-2019-壓克力石墨-152.4x182.9cm.jpg",
-    begin_exhibition: "2021-10-01",
-    end_exhibition: "2021-12-12",
-  },
-  {
-    name_tw: "蔣勳",
-    name_en: "Chiang Hsun",
-    title_tw: "天地有大美",
-    title_en: "The Beauty of Heaven and Earth",
-    img: "/img/fake_data/7-蔣勳《雙松》-2019-水墨設色紙本-37.8x33.5cm.jpg",
-    begin_exhibition: "2021-10-01",
-    end_exhibition: "2021-12-12",
-  },
+  // {
+  //   name_tw: "劉安民",
+  //   name_en: "Lao Lianben",
+  //   title_tw: "光華",
+  //   title_en: "Glorious",
+  //   img: "/img/fake_data/2-劉安民-《池塘松尾芭蕉》-2019-壓克力石墨-152.4x182.9cm.jpg",
+  //   width: 1920,
+  //   height: 1602,
+  //   begin_exhibition: "2021-10-01",
+  //   end_exhibition: "2021-12-12",
+  //   caption_tw: "羅智信，不存在的蝸牛，2019\n\n展覽現場",
+  //   caption_en: "Luo Jr-shin, snails(not included), 2019\n\nInstallation view",
+  // },
+  // {
+  //   name_tw: "蔣勳",
+  //   name_en: "Chiang Hsun",
+  //   title_tw: "天地有大美",
+  //   title_en: "The Beauty of Heaven and Earth",
+  //   img: "/img/fake_data/7-蔣勳《雙松》-2019-水墨設色紙本-37.8x33.5cm.jpg",
+  //   width: 1755,
+  //   height: 1920,
+  //   begin_exhibition: "2021-10-01",
+  //   end_exhibition: "2021-12-12",
+  //   caption_tw: "羅智信，不存在的蝸牛，2019\n\n展覽現場",
+  //   capttion_en: "Luo Jr-shin, snails(not included), 2019\n\nInstallation view",
+  // },
 ];
 
 export default function Artist({ useLang }) {
@@ -114,7 +142,7 @@ export default function Artist({ useLang }) {
               <Artworks artworks={artworks} useLang={useLang} />
             </Box>
 
-            <Box pl={{ xs: 0, md: 12 }} pt={8}>
+            <Box pl={{ xs: 0, md: 12 }} pt={14}>
               <Exhibitions artworks={artworks} useLang={useLang} />
             </Box>
           </Box>

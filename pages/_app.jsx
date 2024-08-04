@@ -19,6 +19,10 @@ const noto_sans = Noto_Sans({ weight: "500", subsets: ["latin"] });
 /* Icons */
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+/* React Slick CSS (slider) */
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 /* Mobile Nav Item */
 const Nav_item_m = styled(Paper)(({ theme }) => ({
   background: "none",
