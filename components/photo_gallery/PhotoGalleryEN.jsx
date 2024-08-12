@@ -73,12 +73,20 @@ export default function PhotoGalleryEN({ photos }) {
         renderContainer={renderContainer}
         renderRowContainer={renderRowContainer}
         defaultContainerWidth={1200}
+        // sizes={{
+        //   size: "calc(100vw - 40px)",
+        //   sizes: [
+        //     { viewport: "(max-width: 299px)", size: "calc(100vw - 10px)" },
+        //     { viewport: "(max-width: 599px)", size: "calc(100vw - 20px)" },
+        //     { viewport: "(max-width: 1199px)", size: "calc(100vw - 30px)" },
+        //   ],
+        // }}
         sizes={{
-          size: "calc(100vw - 40px)",
+          size: "33vw",
           sizes: [
-            { viewport: "(max-width: 299px)", size: "calc(100vw - 10px)" },
-            { viewport: "(max-width: 599px)", size: "calc(100vw - 20px)" },
-            { viewport: "(max-width: 1199px)", size: "calc(100vw - 30px)" },
+            // { viewport: "(max-width: 299px)", size: "calc(100vw - 10px)" },
+            { viewport: "(max-width: 768px)", size: "calc(100vw - 20px)" },
+            { viewport: "(max-width: 1200px)", size: "calc(50vw - 30px)" },
           ],
         }}
         onClick={({ index: current }) => setIndex(current)}

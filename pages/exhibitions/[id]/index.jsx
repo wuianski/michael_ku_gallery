@@ -102,35 +102,30 @@ const Item = styled(Paper)(({ theme }) => ({
 // ];
 
 export default function Exhibition({ useLang, exhibitions }) {
-  console.log(exhibitions);
+  // console.log(exhibitions);
   return (
     <>
       <Container maxWidth="lg">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.5 } }}
           exit={{ opacity: 0, transition: { duration: 0.5 } }}
+        > */}
+        <Box
+          p={2}
+          className={noto_serif.className}
+          sx={{
+            fontSize: { xs: "18px", sm: "14px" },
+            fontWeight: 400,
+            letterSpacing: "0.88px",
+            lineHeight: { xs: "1.5", sm: "1.5" },
+          }}
         >
-          <Box
-            p={2}
-            className={noto_serif.className}
-            sx={{
-              fontSize: { xs: "18px", sm: "14px" },
-              fontWeight: 400,
-              letterSpacing: "0.88px",
-              lineHeight: { xs: "1.5", sm: "1.5" },
-            }}
-          >
-            {exhibitions.map((e, index) => (
-              <EContentBlock
-                e={e}
-                index={index}
-                useLang={useLang}
-                key={index}
-              />
-            ))}
-          </Box>
-        </motion.div>
+          {exhibitions.map((e, index) => (
+            <EContentBlock e={e} index={index} useLang={useLang} key={index} />
+          ))}
+        </Box>
+        {/* </motion.div> */}
       </Container>
     </>
   );
@@ -150,7 +145,8 @@ export async function getServerSideProps({ params }) {
             }
           }, 
           artists {
-            artists_id {              
+            artists_id {     
+                id         
                 name_tw
                 name_en
             }

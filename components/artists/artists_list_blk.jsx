@@ -91,7 +91,7 @@ export default function ArtistsListBlk({ useLang, artists }) {
               height={500}
               alt="Picture of the artwork"
               style={{ objectFit: "contain", objectPosition: "top" }}
-              sizes="50vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
             />
           </Box>
         </Item>

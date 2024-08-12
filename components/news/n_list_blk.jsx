@@ -4,8 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 /* Components */
 import B2E from "@/components/common/begin2endDate";
-import ArtistsNameTW from "@/components/common/artistsNameTW";
-import ArtistsNameEN from "@/components/common/artistsNameEN";
+import ArtistsNameTW from "@/components/common/artistsNameTWNoLink";
+import ArtistsNameEN from "@/components/common/artistsNameENNoLink";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -30,7 +30,7 @@ export default function NListBlock({ useLang, news }) {
             <Grid item xs={12} md={6} key={index}>
               <Item>
                 <Link href={`/news/${n.id}`}>
-                  <motion.div whileHover={{ scale: 1.1 }}>
+                  <motion.div whileHover={{ scale: 1.05 }}>
                     <Box
                       p={{ xs: 1.4, sm: 2 }}
                       sx={{

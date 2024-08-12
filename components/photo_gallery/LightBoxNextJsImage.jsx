@@ -43,13 +43,13 @@ export default function NextJsImage({ slide, offset, rect }) {
     <div style={{ position: "relative", width, height }}>
       <Image
         fill
-        priority={true}
+        // priority={true}
         alt="work image"
         src={slide}
         quality={100}
         // loading="eager"
         draggable={false}
-        placeholder={slide.blurDataURL ? "blur" : undefined}
+        // placeholder={slide.blurDataURL ? "blur" : undefined}
         style={{
           objectFit: cover ? "cover" : "contain",
           cursor: click ? "pointer" : undefined,

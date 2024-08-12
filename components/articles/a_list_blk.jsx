@@ -29,7 +29,7 @@ export default function AListBlock({ useLang, articles }) {
             <Grid item xs={12} md={6} key={index}>
               <Item>
                 <Link href={`/articles/${a.id}`}>
-                  <motion.div whileHover={{ scale: 1.1 }}>
+                  <motion.div whileHover={{ scale: 1.05 }}>
                     <Box
                       p={{ xs: 1.4, sm: 2 }}
                       sx={{ fontSize: 14, fontWeight: 400 }}

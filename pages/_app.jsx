@@ -248,8 +248,19 @@ function App({ Component, pageProps }) {
       </Box>
 
       {/* Page */}
+      {/* important to add key for make it work */}
       <Box pt={2}>
-        <Component key={router.route} {...pageProps} useLang={useLang} />
+        {/* <AnimatePresence> */}
+        <motion.div
+          key={router.route}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.5 } }}
+          exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          className="content"
+        >
+          <Component key={router.route} {...pageProps} useLang={useLang} />
+        </motion.div>
+        {/* </AnimatePresence> */}
       </Box>
       {/* Footer */}
       <Box className={noto_serif.className} pt={12} pb={6}>

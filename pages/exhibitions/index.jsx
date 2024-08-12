@@ -90,43 +90,43 @@ export default function Exhibitions({
   return (
     <>
       <Container maxWidth="lg">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.5 } }}
           exit={{ opacity: 0, transition: { duration: 0.5 } }}
+        > */}
+        <Box
+          p={2}
+          className={noto_serif.className}
+          sx={{
+            fontSize: { xs: "18px", sm: "14px" },
+            fontWeight: 400,
+            letterSpacing: "0.88px",
+            lineHeight: { xs: "1.5", sm: "1.5" },
+          }}
         >
-          <Box
-            p={2}
-            className={noto_serif.className}
-            sx={{
-              fontSize: { xs: "18px", sm: "14px" },
-              fontWeight: 400,
-              letterSpacing: "0.88px",
-              lineHeight: { xs: "1.5", sm: "1.5" },
-            }}
-          >
-            {/* 當期展覽 */}
-            <Box pl={{ xs: 0, md: 12 }} pb={12} pt={2}>
-              <Box pb={2} sx={{ color: "#666" }}>
-                {useLang ? "當期展覽" : "Current Exhibition"}
-              </Box>
-              <CurrentExhibitions
-                exhibitions={current_exhibitions.exhibitions}
-                useLang={useLang}
-              />
+          {/* 當期展覽 */}
+          <Box pl={{ xs: 0, md: 12 }} pb={12} pt={2}>
+            <Box pb={2} sx={{ color: "#666" }}>
+              {useLang ? "當期展覽" : "Current Exhibition"}
             </Box>
-            {/* 過往展覽 */}
-            <Box pl={{ xs: 0, md: 12 }}>
-              <Box pb={2} sx={{ color: "#666" }}>
-                {useLang ? "過往展覽" : "Past Exhibitions"}
-              </Box>
-              <PastExhibitions
-                exhibitions={past_exhibitions.exhibitions}
-                useLang={useLang}
-              />
-            </Box>
+            <CurrentExhibitions
+              exhibitions={current_exhibitions.exhibitions}
+              useLang={useLang}
+            />
           </Box>
-        </motion.div>
+          {/* 過往展覽 */}
+          <Box pl={{ xs: 0, md: 12 }}>
+            <Box pb={2} sx={{ color: "#666" }}>
+              {useLang ? "過往展覽" : "Past Exhibitions"}
+            </Box>
+            <PastExhibitions
+              exhibitions={past_exhibitions.exhibitions}
+              useLang={useLang}
+            />
+          </Box>
+        </Box>
+        {/* </motion.div> */}
       </Container>
     </>
   );
@@ -147,7 +147,8 @@ export async function getStaticProps() {
             }
           }, 
           artists {
-            artists_id {              
+            artists_id { 
+                id             
                 name_tw
                 name_en
             }
@@ -177,6 +178,7 @@ export async function getStaticProps() {
           },
           artists {
             artists_id {
+                id
                 name_tw
                 name_en
             }

@@ -1,5 +1,6 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 /* Fonts */
 import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
 const noto_serif = Noto_Serif({ subsets: ["latin"] });
@@ -28,58 +29,60 @@ export default function Exhibitions({ useLang, exhibitions }) {
         {exhibitions.map((a, index) => (
           <Grid item xs={12} md={6} key={index}>
             <Item>
-              <>
-                <Box
-                  sx={{
-                    backgroundColor: "none",
-                    width: { xs: "100%", md: "100%" },
-                    height: { xs: 130, md: 338 },
-                    position: "relative",
-                  }}
-                >
-                  <Image
-                    priority={true}
-                    // src={a.img}
-                    src={`${process.env.DIRECTUS_URL}/assets/${a.exhibitions_id.cover.image.filename_disk}`}
-                    fill
-                    alt="Picture of the artwork"
-                    style={{
-                      objectFit: "cover",
-                      objectPosition: "center",
+              <Link href={`/exhibitions/${a.exhibitions_id.id}`}>
+                <>
+                  <Box
+                    sx={{
+                      backgroundColor: "none",
+                      width: { xs: "100%", md: "100%" },
+                      height: { xs: 130, md: 338 },
+                      position: "relative",
                     }}
-                    sizes="50vw"
-                  />
-                </Box>
-                <Box pt={2}>
-                  {useLang ? (
-                    <>
-                      <Box sx={{ fontSize: 18, textAlign: "left" }}>
-                        {a.exhibitions_id.title_tw}
-                      </Box>
-                      <B2E
-                        begin={a.exhibitions_id.begin_exhibition}
-                        end={a.exhibitions_id.end_exhibition}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <Box
-                        sx={{
-                          fontSize: 18,
-                          textAlign: "left",
-                          fontStyle: "italic",
-                        }}
-                      >
-                        {a.exhibitions_id.title_en}
-                      </Box>
-                      <B2E
-                        begin={a.exhibitions_id.begin_exhibition}
-                        end={a.exhibitions_id.end_exhibition}
-                      />
-                    </>
-                  )}
-                </Box>
-              </>
+                  >
+                    <Image
+                      priority={true}
+                      // src={a.img}
+                      src={`${process.env.DIRECTUS_URL}/assets/${a.exhibitions_id.cover.image.filename_disk}`}
+                      fill
+                      alt="Picture of the artwork"
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center",
+                      }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                    />
+                  </Box>
+                  <Box pt={2}>
+                    {useLang ? (
+                      <>
+                        <Box sx={{ fontSize: 18, textAlign: "left" }}>
+                          {a.exhibitions_id.title_tw}
+                        </Box>
+                        <B2E
+                          begin={a.exhibitions_id.begin_exhibition}
+                          end={a.exhibitions_id.end_exhibition}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <Box
+                          sx={{
+                            fontSize: 18,
+                            textAlign: "left",
+                            fontStyle: "italic",
+                          }}
+                        >
+                          {a.exhibitions_id.title_en}
+                        </Box>
+                        <B2E
+                          begin={a.exhibitions_id.begin_exhibition}
+                          end={a.exhibitions_id.end_exhibition}
+                        />
+                      </>
+                    )}
+                  </Box>
+                </>
+              </Link>
             </Item>
           </Grid>
         ))}

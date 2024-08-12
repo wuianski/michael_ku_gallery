@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import Link from "next/link";
 
 export default function ArtistsNameEN({ artists }) {
   return (
@@ -6,13 +7,17 @@ export default function ArtistsNameEN({ artists }) {
       {artists.map((a, index) => (
         <Box component="span" key={index}>
           {index === artists.length - 1 ? (
-            <Box mr={0.5} component="span" key={index}>
-              {a.artists_id.name_en}
-            </Box>
+            <Link href={`/artists/${a.artists_id.id}`} passHref>
+              <Box mr={0.5} component="span" key={index}>
+                {a.artists_id.name_en}
+              </Box>
+            </Link>
           ) : (
-            <Box mr={0.5} component="span" key={index}>
-              {a.artists_id.name_en} /
-            </Box>
+            <Link href={`/artists/${a.artists_id.id}`} passHref>
+              <Box mr={0.5} component="span" key={index}>
+                {a.artists_id.name_en} /
+              </Box>
+            </Link>
           )}
         </Box>
       ))}

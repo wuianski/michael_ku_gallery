@@ -69,24 +69,24 @@ export default function Publications({ useLang, publications }) {
   return (
     <>
       <Container maxWidth="lg">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.5 } }}
           exit={{ opacity: 0, transition: { duration: 0.5 } }}
+        > */}
+        <Box
+          p={2}
+          className={noto_serif.className}
+          sx={{
+            fontSize: { xs: "14px", sm: "14px" },
+            fontWeight: 400,
+            letterSpacing: "0.88px",
+            lineHeight: { xs: "1.5", sm: "1.5" },
+          }}
         >
-          <Box
-            p={2}
-            className={noto_serif.className}
-            sx={{
-              fontSize: { xs: "14px", sm: "14px" },
-              fontWeight: 400,
-              letterSpacing: "0.88px",
-              lineHeight: { xs: "1.5", sm: "1.5" },
-            }}
-          >
-            <PListBlock pub={publications.publications} useLang={useLang} />
-          </Box>
-        </motion.div>
+          <PListBlock pub={publications.publications} useLang={useLang} />
+        </Box>
+        {/* </motion.div> */}
       </Container>
     </>
   );

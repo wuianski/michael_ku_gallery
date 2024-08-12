@@ -127,25 +127,25 @@ export default function Articles({ useLang, articles }) {
   return (
     <>
       <Container maxWidth="lg">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { duration: 0.5 } }}
           exit={{ opacity: 0, transition: { duration: 0.5 } }}
+        > */}
+        <Box
+          p={2}
+          className={noto_serif.className}
+          sx={{
+            width: { xs: "100%", sm: "50%" },
+            fontSize: { xs: "18px", sm: "14px" },
+            fontWeight: 400,
+            letterSpacing: "0.88px",
+            lineHeight: { xs: "1.5", sm: "1.5" },
+          }}
         >
-          <Box
-            p={2}
-            className={noto_serif.className}
-            sx={{
-              width: { xs: "100%", sm: "50%" },
-              fontSize: { xs: "18px", sm: "14px" },
-              fontWeight: 400,
-              letterSpacing: "0.88px",
-              lineHeight: { xs: "1.5", sm: "1.5" },
-            }}
-          >
-            <AListBlock articles={articles.articles} useLang={useLang} />
-          </Box>
-        </motion.div>
+          <AListBlock articles={articles.articles} useLang={useLang} />
+        </Box>
+        {/* </motion.div> */}
       </Container>
     </>
   );

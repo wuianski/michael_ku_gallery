@@ -9,28 +9,25 @@ export default function Nav({ useLang }) {
     <>
       {/* Desktop - logo + nav */}
       <Box p={"50px"} sx={{ display: { xs: "none", md: "block" } }}>
-        <Link href="/">
-          <Box
-            sx={{
-              width: "max-content",
-              marginLeft: "auto",
-              marginRight: "auto",
-              width: "470px",
-              height: "23px",
-              position: "relative",
-            }}
-          >
-            <Image
-              src="/img/logo.png"
-              alt="about open image"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-              style={{ objectFit: "contain" }}
-              placeholder="blur"
-              blurDataURL="/img/logo.png"
-            />
-          </Box>
-        </Link>
+        <Box
+          sx={{ width: "max-content", marginLeft: "auto", marginRight: "auto" }}
+        >
+          <Link href="/">
+            <Box>
+              <Image
+                src="/img/logo.png"
+                alt="about open image"
+                // fill
+                width={470}
+                height={23}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+                style={{ objectFit: "contain" }}
+                placeholder="blur"
+                blurDataURL="/img/logo.png"
+              />
+            </Box>
+          </Link>
+        </Box>
         <Box
           sx={{
             width: "max-content",
@@ -47,28 +44,28 @@ export default function Nav({ useLang }) {
       </Box>
       {/* Mobile - logo */}
       <Box pt={"30px"} sx={{ display: { xs: "block", md: "none" } }}>
-        <Link href="/">
-          <Box
-            sx={{
-              width: "max-content",
-              marginLeft: "auto",
-              marginRight: "auto",
-              width: "75px",
-              height: "75px",
-              position: "relative",
-            }}
-          >
-            <Image
-              src="/img/logo_m.png"
-              alt="about open image"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
-              style={{ objectFit: "contain" }}
-              placeholder="blur"
-              blurDataURL="/img/logo_m.png"
-            />
-          </Box>
-        </Link>
+        {/* <Link href="/"> */}
+        <Box
+          sx={{
+            width: "max-content",
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "75px",
+            height: "75px",
+            position: "relative",
+          }}
+        >
+          <Image
+            src="/img/logo_m.png"
+            alt="about open image"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
+            style={{ objectFit: "contain" }}
+            placeholder="blur"
+            blurDataURL="/img/logo_m.png"
+          />
+        </Box>
+        {/* </Link> */}
       </Box>
     </>
   );

@@ -45,43 +45,6 @@ export default function EContentBlock({ useLang, e, index }) {
         <Stack direction={{ xs: "column", sm: "row" }} spacing={10}>
           {/* Artworks */}
           <Item sx={{ width: { xs: "100%", sm: "50%" } }}>
-            {/* <Box pl={{ xs: 0, md: 0 }}>
-              <Grid
-                container
-                spacing={{ xs: 2, md: 4 }}
-                columns={{ xs: 12, md: 12 }}
-              >
-                {e.artworks.map((a, index) => (
-                  <Grid item xs={6} md={6} key={index}>
-                    <Item>
-                      <>
-                        <Box
-                          sx={{
-                            backgroundColor: "none",
-                            width: { xs: "100%", md: "100%" },
-                            height: { xs: 100, md: 168 },
-                            position: "relative",
-                          }}
-                        >
-                          <Image
-                            priority={true}
-                            src={`${process.env.DIRECTUS_URL}/assets/${a.artworks_id.image.filename_disk}`}
-                            fill
-                            alt="Picture of the artwork"
-                            style={{
-                              objectFit: "contain",
-                              objectPosition: "center",
-                            }}
-                            sizes="50vw"
-                          />
-                        </Box>
-                      </>
-                    </Item>
-                  </Grid>
-                ))}
-              </Grid>
-            </Box> */}
-
             <Artworks artworks={e.artworks} useLang={useLang} />
           </Item>
           {/* Exhibition Content */}

@@ -26,8 +26,10 @@ export default function NextJsImageTW({
         fill
         src={photo}
         quality={100}
-        placeholder={"blurDataURL" in photo ? "blur" : undefined}
+        // placeholder="blur"
+        // blurDataURL={photo}
         {...{ alt, title, sizes, className, onClick }}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
       <div
         style={{

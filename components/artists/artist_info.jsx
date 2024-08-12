@@ -41,19 +41,23 @@ export default function ArtistInfo({ useLang, artist }) {
                 {/* {artist.content_tw} */}
               </Box>
               <Box sx={{ fontSize: 12, cursor: "pointer" }}>
-                <Box pb={1}>
-                  <a
-                    href={`${process.env.DIRECTUS_URL}/assets/${artist.cv_tw.filename_disk}`}
-                    target="_blank"
-                  >
-                    下載簡歷
-                  </a>
-                </Box>
-                <Box>
-                  <a href={`${artist.website}`} target="_blank">
-                    個人網站
-                  </a>
-                </Box>
+                {artist.cv_tw && (
+                  <Box pb={1}>
+                    <a
+                      href={`${process.env.DIRECTUS_URL}/assets/${artist.cv_tw.filename_disk}`}
+                      target="_blank"
+                    >
+                      下載簡歷
+                    </a>
+                  </Box>
+                )}
+                {artist.website && (
+                  <Box>
+                    <a href={`${artist.website}`} target="_blank">
+                      個人網站
+                    </a>
+                  </Box>
+                )}
               </Box>
             </>
           ) : (
@@ -77,19 +81,23 @@ export default function ArtistInfo({ useLang, artist }) {
                 {/* {artist.content_en} */}
               </Box>
               <Box sx={{ fontSize: 12, cursor: "pointer" }}>
-                <Box pb={1}>
-                  <a
-                    href={`${process.env.DIRECTUS_URL}/assets/${artist.cv_en.filename_disk}`}
-                    target="_blank"
-                  >
-                    CV
-                  </a>
-                </Box>
-                <Box>
-                  <a href={`${artist.website}`} target="_blank">
-                    Website
-                  </a>
-                </Box>
+                {artist.cv_en && (
+                  <Box pb={1}>
+                    <a
+                      href={`${process.env.DIRECTUS_URL}/assets/${artist.cv_en.filename_disk}`}
+                      target="_blank"
+                    >
+                      CV
+                    </a>
+                  </Box>
+                )}
+                {artist.website && (
+                  <Box>
+                    <a href={`${artist.website}`} target="_blank">
+                      Website
+                    </a>
+                  </Box>
+                )}
               </Box>
             </>
           )}
@@ -112,7 +120,7 @@ export default function ArtistInfo({ useLang, artist }) {
                 objectFit: "contain",
                 objectPosition: "right",
               }}
-              sizes="50vw"
+              sizes="(max-width: 768px) 50vw,  25vw"
             />
           </Box>
         </Item>
