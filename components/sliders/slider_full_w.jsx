@@ -45,7 +45,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-export default function SliderFullW({ imgs }) {
+export default function SliderFullW({ imgs, index }) {
   //   console.log(imgs);
   /** react-slick setting **/
   const settings = {
@@ -60,7 +60,7 @@ export default function SliderFullW({ imgs }) {
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div className="slider-container">
+    <div className="slider-container" key={index}>
       <Slider {...settings}>
         {imgs.map((img, index) => (
           <Box
@@ -74,7 +74,7 @@ export default function SliderFullW({ imgs }) {
           >
             <Image
               priority={true}
-              src={img}
+              src={`${process.env.DIRECTUS_URL}/assets/${img.artworks_id.image.filename_disk}`}
               fill
               alt="Picture of the artwork"
               style={{ objectFit: "contain" }}

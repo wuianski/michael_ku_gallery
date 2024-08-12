@@ -37,19 +37,22 @@ export default function PhotoGalleryEN({ photos }) {
   //   console.log(photos);
   const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
   const myphotos = photos.map((photo, index) => ({
-    src: `${photo.img}`,
-    width: photo.width,
-    height: photo.height,
-    title_en: `${photo.title_en}`,
-    description: `${photo.caption_en}`,
+    src: `${process.env.DIRECTUS_URL}/assets/${photo.artworks_id.image.filename_disk}`,
+    width: photo.artworks_id.image.width,
+    height: photo.artworks_id.image.height,
+    title_en: `${photo.artworks_id.title_en}`,
+    description: `${photo.artworks_id.caption_en}`,
     index: index,
     srcSet: breakpoints.map((breakpoint) => {
-      const height = Math.round((photo.height / photo.width) * breakpoint);
+      const height = Math.round(
+        (photo.artworks_id.image.height / photo.artworks_id.image.width) *
+          breakpoint
+      );
       return {
-        src: `${photo.img}`,
+        src: `${process.env.DIRECTUS_URL}/assets/${photo.artworks_id.image.filename_disk}`,
         width: breakpoints,
         height,
-        title_en: `${photo.title_en}`,
+        title_en: `${photo.artworks_id.title_en}`,
         index: index,
       };
     }),

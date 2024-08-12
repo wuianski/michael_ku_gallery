@@ -14,6 +14,8 @@ import {
   MarkerF,
   InfoWindowF,
 } from "@react-google-maps/api";
+/* Fetch Data */
+import fetchData from "@/lib/api";
 
 const Item = styled(Paper)(({ theme }) => ({
   // padding: theme.spacing(2),
@@ -26,14 +28,15 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 /* fake data */
-const content_tw =
-  "谷公館 Michael Ku Gallery，坐落在臺北市中心，成立於2008年，是臺灣有著美術史背景訓練的畫廊業者，每檔展覽谷浩宇先生皆親自策展並撰寫展覽文字，以大華人區為主軸，連通國際網路，一系列有規劃地介紹今日優秀藝術家，成為一個清晰的脈絡體系。並以文化推廣的角度，為畫廊創造一種具備獨立精神與人文深度的視野，探討在作品表面的背後的另一層次意境。";
-const content_en =
-  "Michael Ku Gallery, located in the heart of Taipei, was established in 2008. As a gallery owner with a background in art history, Michael Ku personally curates and writes the text for each exhibition. With a focus on the Greater China region and an international reach, the gallery presents a series of carefully planned exhibitions that introduce today's outstanding artists in a clear context. From a cultural promotion perspective, the gallery creates an independent and humanistic vision, exploring the deeper meaning behind the works.";
-const subscribe_tw = "訂閱郵件以獲取畫廊最新消息";
-const subscribe_en = "Subscribe to our newsletter for the latest news";
+// const content_tw =
+//   "谷公館 Michael Ku Gallery，坐落在臺北市中心，成立於2008年，是臺灣有著美術史背景訓練的畫廊業者，每檔展覽谷浩宇先生皆親自策展並撰寫展覽文字，以大華人區為主軸，連通國際網路，一系列有規劃地介紹今日優秀藝術家，成為一個清晰的脈絡體系。並以文化推廣的角度，為畫廊創造一種具備獨立精神與人文深度的視野，探討在作品表面的背後的另一層次意境。";
+// const content_en =
+//   "Michael Ku Gallery, located in the heart of Taipei, was established in 2008. As a gallery owner with a background in art history, Michael Ku personally curates and writes the text for each exhibition. With a focus on the Greater China region and an international reach, the gallery presents a series of carefully planned exhibitions that introduce today's outstanding artists in a clear context. From a cultural promotion perspective, the gallery creates an independent and humanistic vision, exploring the deeper meaning behind the works.";
+// const subscribe_tw = "訂閱郵件以獲取畫廊最新消息";
+// const subscribe_en = "Subscribe to our newsletter for the latest news";
 
-export default function About({ useLang }) {
+export default function About({ useLang, about }) {
+  // console.log(about);
   const libraries = useMemo(() => ["places"], []);
   const mapCenter = useMemo(
     () => ({ lat: 25.046626155721928, lng: 121.54932281962199 }),
@@ -80,18 +83,28 @@ export default function About({ useLang }) {
               <Item>
                 <Box>
                   {useLang ? (
-                    <Box className={noto_serif.className}>{content_tw}</Box>
+                    <Box
+                      className={noto_serif.className}
+                      dangerouslySetInnerHTML={{
+                        __html: about.info_tw,
+                      }}
+                    ></Box>
                   ) : (
-                    <Box className={baskervville.className}>{content_en}</Box>
+                    <Box
+                      className={baskervville.className}
+                      dangerouslySetInnerHTML={{
+                        __html: about.info_en,
+                      }}
+                    ></Box>
                   )}
                 </Box>
-                <Box pt={10}>
+                {/* <Box pt={10}>
                   {useLang ? (
                     <Box className={noto_serif.className}>{subscribe_tw}</Box>
                   ) : (
                     <Box className={baskervville.className}>{subscribe_en}</Box>
                   )}
-                </Box>
+                </Box> */}
               </Item>
               <Item>
                 <Box>
@@ -133,4 +146,27 @@ export default function About({ useLang }) {
       </Container>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const about = await fetchData(
+    `
+      query  {
+          about{
+            info_tw,
+            info_en,
+          }
+      }
+      `,
+    {
+      variables: {},
+    }
+  );
+  return {
+    props: { about: about.data.about },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10, // In seconds
+  };
 }

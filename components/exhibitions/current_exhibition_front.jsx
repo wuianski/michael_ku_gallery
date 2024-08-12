@@ -22,12 +22,19 @@ const Item = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {},
 }));
 
-export default function PastExhibitions({ useLang, exhibitions }) {
+export default function CurrentExhibitionFront({ useLang, exhibitions }) {
+  // console.log(exhibitions);
   return (
     <>
-      <Grid container spacing={{ xs: 6, md: 12 }} columns={{ xs: 12, md: 12 }}>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 0 }}
+        columns={{ xs: 12, md: 12 }}
+        // direction="row"
+        justifyContent="center"
+      >
         {exhibitions.map((e, index) => (
-          <Grid item xs={12} md={4} key={index}>
+          <Grid item xs={12} md={6} key={index}>
             <Item>
               <Link href={`/exhibitions/${e.id}`}>
                 <motion.div whileHover={{ scale: 1.1 }}>
@@ -37,11 +44,14 @@ export default function PastExhibitions({ useLang, exhibitions }) {
                         <Box
                           sx={{
                             backgroundColor: "none",
-                            width: { xs: "100%", md: 340 },
-                            height: { xs: 200, md: 255 },
+                            width: { xs: "100%", md: "100% " },
+                            maxWidth: { xs: "unset", md: "500px " },
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            height: { xs: 245, md: 400 },
                             position: "relative",
-                            boxShadow:
-                              "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px",
+                            // boxShadow:
+                            //   "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px",
                           }}
                         >
                           <Image
@@ -50,7 +60,7 @@ export default function PastExhibitions({ useLang, exhibitions }) {
                             fill
                             alt="Picture of the artwork"
                             style={{
-                              objectFit: "cover",
+                              objectFit: "contain",
                               objectPosition: "center",
                             }}
                             sizes="50vw"
@@ -58,27 +68,44 @@ export default function PastExhibitions({ useLang, exhibitions }) {
                         </Box>
 
                         <Box
-                          sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
-                          pb={1}
-                          pt={2}
+                          sx={{
+                            width: {
+                              xs: "unset",
+                              md: "500px ",
+                            },
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                          }}
                         >
-                          <ArtistsNameTW artists={e.artists} />
+                          <Box
+                            sx={{
+                              fontSize: { xs: 14, sm: 14 },
+                              fontWeight: 500,
+                            }}
+                            pb={1}
+                            pt={2}
+                          >
+                            <ArtistsNameTW artists={e.artists} />
+                          </Box>
+                          <Box sx={{ fontSize: { xs: 18, sm: 18 } }}>
+                            {e.title_tw}
+                          </Box>
+                          <B2E
+                            begin={e.begin_exhibition}
+                            end={e.end_exhibition}
+                          />
                         </Box>
-                        <Box sx={{ fontSize: { xs: 18, sm: 18 } }}>
-                          {e.title_tw}
-                        </Box>
-                        <B2E
-                          begin={e.begin_exhibition}
-                          end={e.end_exhibition}
-                        />
                       </>
                     ) : (
                       <>
                         <Box
                           sx={{
                             backgroundColor: "none",
-                            width: { xs: "100%", md: 340 },
-                            height: { xs: 200, md: 255 },
+                            width: { xs: "100%", md: "100% " },
+                            maxWidth: { xs: "unset", md: "500px " },
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            height: { xs: 245, md: 400 },
                             position: "relative",
                           }}
                         >
@@ -88,32 +115,37 @@ export default function PastExhibitions({ useLang, exhibitions }) {
                             fill
                             alt="Picture of the artwork"
                             style={{
-                              objectFit: "cover",
+                              objectFit: "contain",
                               objectPosition: "center",
                             }}
                             sizes="50vw"
                           />
                         </Box>
-
-                        <Box
-                          sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
-                          pb={1}
-                          pt={2}
-                        >
-                          <ArtistsNameEN artists={e.artists} />
-                        </Box>
                         <Box
                           sx={{
-                            fontSize: { xs: 18, sm: 18 },
-                            fontStyle: "italic",
+                            width: {
+                              xs: "unset",
+                              md: "500px ",
+                            },
+                            marginLeft: "auto",
+                            marginRight: "auto",
                           }}
                         >
-                          {e.title_en}
+                          <Box
+                            sx={{ fontSize: 14, fontWeight: 500 }}
+                            pb={1}
+                            pt={2}
+                          >
+                            <ArtistsNameEN artists={e.artists} />
+                          </Box>
+                          <Box sx={{ fontSize: 18, fontStyle: "italic" }}>
+                            {e.title_en}
+                          </Box>
+                          <B2E
+                            begin={e.begin_exhibition}
+                            end={e.end_exhibition}
+                          />
                         </Box>
-                        <B2E
-                          begin={e.begin_exhibition}
-                          end={e.end_exhibition}
-                        />
                       </>
                     )}
                   </Box>

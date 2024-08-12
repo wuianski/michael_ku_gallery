@@ -19,6 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Artworks({ useLang, artworks }) {
+  // console.log(artworks);
   return (
     <>
       <Box pb={2} sx={{ color: "#666" }}>

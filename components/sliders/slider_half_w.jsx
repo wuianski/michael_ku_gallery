@@ -28,7 +28,7 @@ export default function SliderHalfW({ imgs }) {
         >
           <Image
             priority={true}
-            src={img}
+            src={`${process.env.DIRECTUS_URL}/assets/${img.artworks_id.image.filename_disk}`}
             fill
             alt="Picture of the artwork"
             style={{ objectFit: "contain" }}

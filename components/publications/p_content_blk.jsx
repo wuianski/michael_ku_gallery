@@ -1,6 +1,9 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+/* Component */
+import ArtistsNameTW from "@/components/common/artistsNameTW";
+import ArtistsNameEN from "@/components/common/artistsNameEN";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -11,20 +14,18 @@ const Item = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {},
 }));
 
-export default function PContentBlock({ useLang, pub }) {
+export default function PContentBlock({ useLang, pub, index }) {
+  // console.log(pub);
   return (
-    <>
+    <Box key={index}>
       {useLang ? (
         <>
           <Box
-            sx={{
-              fontSize: { xs: 14, sm: 14 },
-              fontWeight: 500,
-            }}
+            sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
             pb={1}
             pt={2}
           >
-            {pub.name_tw}
+            <ArtistsNameTW artists={pub.artists} />
           </Box>
           <Box sx={{ fontSize: 18 }} pb={2}>
             {pub.title_tw}
@@ -34,14 +35,11 @@ export default function PContentBlock({ useLang, pub }) {
       ) : (
         <>
           <Box
-            sx={{
-              fontSize: { xs: 14, sm: 14 },
-              fontWeight: 500,
-            }}
+            sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
             pb={1}
             pt={2}
           >
-            {pub.name_en}
+            <ArtistsNameEN artists={pub.artists} />
           </Box>
           <Box sx={{ fontSize: 18 }} pb={2}>
             {pub.title_en}
@@ -49,6 +47,6 @@ export default function PContentBlock({ useLang, pub }) {
           <Box sx={{ fontSize: 14 }}>{pub.content_en}</Box>
         </>
       )}
-    </>
+    </Box>
   );
 }

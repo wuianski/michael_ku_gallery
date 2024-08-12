@@ -6,6 +6,8 @@ import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
 const noto_serif = Noto_Serif({ weight: "500", subsets: ["latin"] });
 const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
 const noto_sans = Noto_Sans({ weight: "500", subsets: ["latin"] });
+/* Framer Motion */
+import { motion } from "framer-motion";
 
 const Item = styled(Paper)(({ theme }) => ({
   background: "none",
@@ -27,56 +29,68 @@ export default function NavItem({ useLang }) {
     <>
       <Item>
         <Link href="/artists">
-          {useLang ? (
-            <Box className={noto_sans.className}>藝術家</Box>
-          ) : (
-            <Box className={noto_serif.className}>ARTISTS</Box>
-          )}
+          <motion.div whileHover={{ scale: 1.1 }}>
+            {useLang ? (
+              <Box className={noto_sans.className}>藝術家</Box>
+            ) : (
+              <Box className={noto_serif.className}>ARTISTS</Box>
+            )}
+          </motion.div>
         </Link>
       </Item>
       <Item>
         <Link href="/exhibitions">
-          {useLang ? (
-            <Box className={noto_sans.className}>展覽</Box>
-          ) : (
-            <Box className={noto_serif.className}>EXHIBITIONS</Box>
-          )}
+          <motion.div whileHover={{ scale: 1.1 }}>
+            {useLang ? (
+              <Box className={noto_sans.className}>展覽</Box>
+            ) : (
+              <Box className={noto_serif.className}>EXHIBITIONS</Box>
+            )}
+          </motion.div>
         </Link>
       </Item>
       <Item>
         <Link href="/publications">
-          {useLang ? (
-            <Box className={noto_sans.className}>出版</Box>
-          ) : (
-            <Box className={noto_serif.className}>PUBLICATIONS</Box>
-          )}
+          <motion.div whileHover={{ scale: 1.1 }}>
+            {useLang ? (
+              <Box className={noto_sans.className}>出版</Box>
+            ) : (
+              <Box className={noto_serif.className}>PUBLICATIONS</Box>
+            )}
+          </motion.div>
         </Link>
       </Item>
       <Item>
         <Link href="/news">
-          {useLang ? (
-            <Box className={noto_sans.className}>新聞</Box>
-          ) : (
-            <Box className={noto_serif.className}>NEWS</Box>
-          )}
+          <motion.div whileHover={{ scale: 1.1 }}>
+            {useLang ? (
+              <Box className={noto_sans.className}>新聞</Box>
+            ) : (
+              <Box className={noto_serif.className}>NEWS</Box>
+            )}
+          </motion.div>
         </Link>
       </Item>
       <Item>
         <Link href="/articles">
-          {useLang ? (
-            <Box className={noto_sans.className}>文章</Box>
-          ) : (
-            <Box className={noto_serif.className}>ARTICLES</Box>
-          )}
+          <motion.div whileHover={{ scale: 1.1 }}>
+            {useLang ? (
+              <Box className={noto_sans.className}>文章</Box>
+            ) : (
+              <Box className={noto_serif.className}>ARTICLES</Box>
+            )}
+          </motion.div>
         </Link>
       </Item>
       <Item>
         <Link href="/about">
-          {useLang ? (
-            <Box className={noto_sans.className}>關於</Box>
-          ) : (
-            <Box className={noto_serif.className}>ABOUT</Box>
-          )}
+          <motion.div whileHover={{ scale: 1.1 }}>
+            {useLang ? (
+              <Box className={noto_sans.className}>關於</Box>
+            ) : (
+              <Box className={noto_serif.className}>ABOUT</Box>
+            )}
+          </motion.div>
         </Link>
       </Item>
     </>

@@ -37,19 +37,24 @@ export default function PhotoGalleryTW({ photos }) {
   //   console.log(photos);
   const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
   const myphotos = photos.map((photo, index) => ({
-    src: `${photo.img}`,
-    width: photo.width,
-    height: photo.height,
-    title_tw: `${photo.title_tw}`,
-    description: `${photo.caption_tw}`,
+    // src: `${photo.img}`,
+    src: `${process.env.DIRECTUS_URL}/assets/${photo.artworks_id.image.filename_disk}`,
+    width: photo.artworks_id.image.width,
+    height: photo.artworks_id.image.height,
+    title_tw: `${photo.artworks_id.title_tw}`,
+    description: `${photo.artworks_id.caption_tw}`,
     index: index,
     srcSet: breakpoints.map((breakpoint) => {
-      const height = Math.round((photo.height / photo.width) * breakpoint);
+      const height = Math.round(
+        (photo.artworks_id.image.height / photo.artworks_id.image.width) *
+          breakpoint
+      );
       return {
-        src: `${photo.img}`,
+        // src: `${photo.img}`,
+        src: `${process.env.DIRECTUS_URL}/assets/${photo.artworks_id.image.filename_disk}`,
         width: breakpoints,
         height,
-        title_tw: `${photo.title_tw}`,
+        title_tw: `${photo.artworks_id.title_tw}`,
         index: index,
       };
     }),

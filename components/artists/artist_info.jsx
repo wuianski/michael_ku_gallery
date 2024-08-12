@@ -30,12 +30,30 @@ export default function ArtistInfo({ useLang, artist }) {
               >
                 {artist.name_tw}
               </Box>
-              <Box sx={{ fontSize: { xs: 14, sm: 14 } }} pt={2} pb={8}>
-                {artist.content_tw}
+              <Box
+                sx={{ fontSize: { xs: 14, sm: 14 } }}
+                pt={2}
+                pb={8}
+                dangerouslySetInnerHTML={{
+                  __html: artist.bio_tw,
+                }}
+              >
+                {/* {artist.content_tw} */}
               </Box>
               <Box sx={{ fontSize: 12, cursor: "pointer" }}>
-                <Box pb={1}>下載簡歷</Box>
-                <Box>個人網站</Box>
+                <Box pb={1}>
+                  <a
+                    href={`${process.env.DIRECTUS_URL}/assets/${artist.cv_tw.filename_disk}`}
+                    target="_blank"
+                  >
+                    下載簡歷
+                  </a>
+                </Box>
+                <Box>
+                  <a href={`${artist.website}`} target="_blank">
+                    個人網站
+                  </a>
+                </Box>
               </Box>
             </>
           ) : (
@@ -48,12 +66,30 @@ export default function ArtistInfo({ useLang, artist }) {
               >
                 {artist.name_en}
               </Box>
-              <Box sx={{ fontSize: { xs: 14, sm: 14 } }} pt={2} pb={8}>
-                {artist.content_en}
+              <Box
+                sx={{ fontSize: { xs: 14, sm: 14 } }}
+                pt={2}
+                pb={8}
+                dangerouslySetInnerHTML={{
+                  __html: artist.bio_en,
+                }}
+              >
+                {/* {artist.content_en} */}
               </Box>
               <Box sx={{ fontSize: 12, cursor: "pointer" }}>
-                <Box pb={1}>CV</Box>
-                <Box>Website</Box>
+                <Box pb={1}>
+                  <a
+                    href={`${process.env.DIRECTUS_URL}/assets/${artist.cv_en.filename_disk}`}
+                    target="_blank"
+                  >
+                    CV
+                  </a>
+                </Box>
+                <Box>
+                  <a href={`${artist.website}`} target="_blank">
+                    Website
+                  </a>
+                </Box>
               </Box>
             </>
           )}
@@ -69,7 +105,7 @@ export default function ArtistInfo({ useLang, artist }) {
           >
             <Image
               priority={true}
-              src={artist.cover}
+              src={`${process.env.DIRECTUS_URL}/assets/${artist.cover.image.filename_disk}`}
               fill
               alt="Picture of the artwork"
               style={{

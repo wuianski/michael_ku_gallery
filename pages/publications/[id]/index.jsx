@@ -7,16 +7,18 @@ const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
 /* Framer Motion */
 import { motion } from "framer-motion";
 /* Component */
-import NContentBlock from "@/components/news/n_content_blk";
+import PContentBlock from "@/components/publications/p_content_blk";
+import SliderFullW from "@/components/sliders/slider_full_w";
+/* Fetch Data */
+import fetchData from "@/lib/api";
 
 /* fake data */
-const news = {
+const pub = {
   name_tw: "羅智信",
   name_en: "Luo Jr-shin",
   title_tw: "看我舞動",
   title_en: "Dance with Me",
-  begin_exhibition: "2021-10-01",
-  end_exhibition: "2021-12-12",
+  img: "/img/fake_data/luo.jpg",
   content_tw:
     "畫冊集結時代的鏡子四位參展藝術家(韋嘉/宋琨/陳可/賈藹力)的作品。韋嘉，宋琨，陳可，賈藹力，以及當然還有更多的同世代的中國藝術家，在年齡上，大約都到了超過三十歲的年紀。我們說三十而立，對於一個世代的藝術來說，是否這些三十歲的藝術家，到了一個成熟建立起自己藝術語言的階段，不只形成一個穩定的風格，也同時開始成立起一個日趨成熟確定的自我的思想體系。某種程度來說，這些藝術家不再描繪巨大的中國衝擊下的社會面貌，可能更多的從「人」(個人)的角度出發，用比較隱喻的手法來描繪他所關懷的人生觀。當然，「個人」的描繪不應只是一種自我的喃喃自語，而或許是在於建立起更深刻的思考價值體系。其中，無論是積極的、悲觀的、否定的、爆裂的、存在的、抑鬱的、簡化的，可能更重要的是朝著一個更清晰的思維前進。個人是時代的影子，而時代又像是個人的鏡子。青年藝術家建立自己的思緒語言風格的同時，也串連起一個時代的脈絡的發展。",
   content_en:
@@ -28,7 +30,8 @@ const news = {
   ],
 };
 
-export default function Snews({ useLang }) {
+export default function Publication({ useLang, publications }) {
+  // console.log(publications);
   return (
     <>
       <Container maxWidth="lg">
@@ -48,11 +51,65 @@ export default function Snews({ useLang }) {
             }}
           >
             <Box pl={{ xs: 0, md: 12 }} pt={2}>
-              <NContentBlock news={news} useLang={useLang} />
+              {/* <SliderFullW imgs={pub.imgs} /> */}
+              {publications.map((p, index) => (
+                <SliderFullW imgs={p.images} index={index} key={index} />
+              ))}
+            </Box>
+
+            <Box pl={{ xs: 0, md: 12 }} pt={8}>
+              {publications.map((p, index) => (
+                <PContentBlock
+                  pub={p}
+                  index={index}
+                  useLang={useLang}
+                  key={index}
+                />
+              ))}
             </Box>
           </Box>
         </motion.div>
       </Container>
     </>
   );
+}
+
+export async function getServerSideProps({ params }) {
+  const publications = await fetchData(
+    `
+      query  {
+          publications (filter: { id: { _eq: "${params.id}"} }){
+            id,
+            title_tw,
+            title_en,
+            cover {
+              image {
+                filename_disk
+              }
+            },
+            artists {
+              artists_id {              
+                name_tw
+                name_en
+              }
+            },
+            images {
+              artworks_id {
+                id
+                title_tw
+                title_en
+                image {
+                    filename_disk
+                }
+              }
+            },
+            
+          }
+      }
+      `,
+    {
+      variables: {},
+    }
+  );
+  return { props: { publications: publications.data.publications } };
 }

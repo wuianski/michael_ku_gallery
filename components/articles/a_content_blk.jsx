@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 /* Component */
 import SliderHalfW from "@/components/sliders/slider_half_w";
+import ArtistsNameTW from "@/components/common/artistsNameTW";
+import ArtistsNameEN from "@/components/common/artistsNameEN";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -29,15 +31,19 @@ export default function AContentBlock({ useLang, articles }) {
                 pb={1}
                 pt={2}
               >
-                {articles.name_tw}
+                <ArtistsNameTW artists={articles.artists} />
               </Box>
               <Box sx={{ fontSize: 18 }}>{articles.title_tw}</Box>
               <Box sx={{ fontSize: 12, color: "#666" }}>
-                {articles.begin_exhibition} - {articles.end_exhibition}
+                {new Date(articles.date).toLocaleDateString()}
               </Box>
-              <Box sx={{ fontSize: 14 }} pt={2}>
-                {articles.content_tw}
-              </Box>
+              <Box
+                sx={{ fontSize: 14 }}
+                pt={2}
+                dangerouslySetInnerHTML={{
+                  __html: articles.content_tw,
+                }}
+              ></Box>
             </>
           ) : (
             <>
@@ -49,21 +55,25 @@ export default function AContentBlock({ useLang, articles }) {
                 pb={1}
                 pt={2}
               >
-                {articles.name_en}
+                <ArtistsNameEN artists={articles.artists} />
               </Box>
               <Box sx={{ fontSize: 18 }}>{articles.title_en}</Box>
               <Box sx={{ fontSize: 12, color: "#666" }}>
-                {articles.begin_exhibition} - {articles.end_exhibition}
+                {new Date(articles.date).toLocaleDateString()}
               </Box>
-              <Box sx={{ fontSize: 14 }} pt={2}>
-                {articles.content_en}
-              </Box>
+              <Box
+                sx={{ fontSize: 14 }}
+                pt={2}
+                dangerouslySetInnerHTML={{
+                  __html: articles.content_en,
+                }}
+              ></Box>
             </>
           )}
         </Item>
         <Item sx={{ width: { xs: "100%", sm: "50%" } }}>
           <Box>
-            <SliderHalfW imgs={articles.imgs} />
+            <SliderHalfW imgs={articles.images} />
           </Box>
         </Item>
       </Stack>

@@ -5,6 +5,8 @@ import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
 const noto_serif = Noto_Serif({ subsets: ["latin"] });
 const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
 const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+/* Components */
+import B2E from "@/components/common/begin2endDate";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -15,28 +17,30 @@ const Item = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {},
 }));
 
-export default function Exhibitions({ useLang, artworks }) {
+export default function Exhibitions({ useLang, exhibitions }) {
+  // console.log(exhibitions);
   return (
     <>
       <Box pb={2} sx={{ color: "#666" }}>
         {useLang ? "展覽" : "Exhibitions"}
       </Box>
       <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 12, md: 12 }}>
-        {artworks.map((a, index) => (
-          <Grid item xs={6} md={6} key={index}>
+        {exhibitions.map((a, index) => (
+          <Grid item xs={12} md={6} key={index}>
             <Item>
               <>
                 <Box
                   sx={{
                     backgroundColor: "none",
                     width: { xs: "100%", md: "100%" },
-                    height: { xs: 100, md: 338 },
+                    height: { xs: 130, md: 338 },
                     position: "relative",
                   }}
                 >
                   <Image
                     priority={true}
-                    src={a.img}
+                    // src={a.img}
+                    src={`${process.env.DIRECTUS_URL}/assets/${a.exhibitions_id.cover.image.filename_disk}`}
                     fill
                     alt="Picture of the artwork"
                     style={{
@@ -50,11 +54,12 @@ export default function Exhibitions({ useLang, artworks }) {
                   {useLang ? (
                     <>
                       <Box sx={{ fontSize: 18, textAlign: "left" }}>
-                        {a.title_tw}
+                        {a.exhibitions_id.title_tw}
                       </Box>
-                      <Box sx={{ fontSize: 12, color: "#666" }}>
-                        {a.begin_exhibition} - {a.end_exhibition}
-                      </Box>
+                      <B2E
+                        begin={a.exhibitions_id.begin_exhibition}
+                        end={a.exhibitions_id.end_exhibition}
+                      />
                     </>
                   ) : (
                     <>
@@ -65,11 +70,12 @@ export default function Exhibitions({ useLang, artworks }) {
                           fontStyle: "italic",
                         }}
                       >
-                        {a.title_en}
+                        {a.exhibitions_id.title_en}
                       </Box>
-                      <Box sx={{ fontSize: 12, color: "#666" }}>
-                        {a.begin_exhibition} - {a.end_exhibition}
-                      </Box>
+                      <B2E
+                        begin={a.exhibitions_id.begin_exhibition}
+                        end={a.exhibitions_id.end_exhibition}
+                      />
                     </>
                   )}
                 </Box>

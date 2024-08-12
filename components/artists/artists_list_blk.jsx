@@ -2,6 +2,8 @@ import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import React, { useState, useEffect, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
+/* Framer Motion */
+import { AnimatePresence, motion } from "framer-motion";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
@@ -17,11 +19,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function ArtistsListBlk({ useLang, artists }) {
   const [hoverId, setHoverId] = useState(0);
-  const [renderSrc, setRenderSrc] = useState(artists[hoverId].img);
+  // const [renderSrc, setRenderSrc] = useState(artists[hoverId].img);
+  const [renderSrc, setRenderSrc] = useState(
+    artists[hoverId].cover.image.filename_disk
+  );
 
   useEffect(() => {
     // console.log(hoverId);
-    setRenderSrc(artists[hoverId].img);
+    setRenderSrc(artists[hoverId].cover.image.filename_disk);
     // console.log(renderSrc);
   }, [hoverId]);
   return (
@@ -38,7 +43,7 @@ export default function ArtistsListBlk({ useLang, artists }) {
               {artists.map((a, index) => (
                 <Grid item xs={12} md={6} key={index}>
                   <Item>
-                    <Link href={`/artists/${a.name_en}`}>
+                    <Link href={`/artists/${a.id}`}>
                       <Box p={{ xs: 1.4, sm: 2 }}>
                         {useLang ? (
                           <>
@@ -47,7 +52,9 @@ export default function ArtistsListBlk({ useLang, artists }) {
                               sx={{ cursor: "pointer" }}
                               onMouseOver={() => setHoverId(index)}
                             >
-                              {a.name_tw}
+                              <motion.div whileHover={{ scale: 1.1 }}>
+                                {a.name_tw}
+                              </motion.div>
                             </Box>
                           </>
                         ) : (
@@ -56,7 +63,9 @@ export default function ArtistsListBlk({ useLang, artists }) {
                             sx={{ cursor: "pointer" }}
                             onMouseOver={() => setHoverId(index)}
                           >
-                            {a.name_en}
+                            <motion.div whileHover={{ scale: 1.1 }}>
+                              {a.name_en}
+                            </motion.div>
                           </Box>
                         )}
                       </Box>
@@ -76,11 +85,12 @@ export default function ArtistsListBlk({ useLang, artists }) {
           <Box>
             <Image
               priority={true}
-              src={renderSrc}
+              // src={renderSrc}
+              src={`${process.env.DIRECTUS_URL}/assets/${renderSrc}`}
               width={500}
               height={500}
               alt="Picture of the artwork"
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: "contain", objectPosition: "top" }}
               sizes="50vw"
             />
           </Box>

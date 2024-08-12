@@ -63,7 +63,7 @@ function App({ Component, pageProps }) {
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
       <Nav useLang={useLang} />
       {/* Desktop - language switch */}
-      <Box sx={{ display: { xs: "none", sm: "block" }, cursor: "pointer" }}>
+      <Box sx={{ display: { xs: "none", md: "block" }, cursor: "pointer" }}>
         <motion.div variants={show_state} animate={useLang ? "show" : "hide"}>
           <Box
             sx={{
@@ -77,7 +77,7 @@ function App({ Component, pageProps }) {
             onClick={() => setLang(false)}
             className={baskervville.className}
           >
-            English
+            <motion.div whileHover={{ scale: 1.1 }}>English</motion.div>
           </Box>
         </motion.div>
 
@@ -93,12 +93,12 @@ function App({ Component, pageProps }) {
             onClick={() => setLang(true)}
             className={noto_serif.className}
           >
-            中文
+            <motion.div whileHover={{ scale: 1.1 }}>中文</motion.div>
           </Box>
         </motion.div>
       </Box>
       {/* Mobile - nav + language switch */}
-      <Box sx={{ display: { xs: "block", sm: "none" } }} pt={4}>
+      <Box sx={{ display: { xs: "block", md: "none" } }} pt={4}>
         {!nav_m && (
           <Box
             onClick={() => setNav_m(true)}

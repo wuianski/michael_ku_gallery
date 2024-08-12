@@ -1,6 +1,11 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+/* Framer Motion */
+import { motion } from "framer-motion";
+/* Component */
+import ArtistsNameTW from "@/components/common/artistsNameTW";
+import ArtistsNameEN from "@/components/common/artistsNameEN";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -24,133 +29,140 @@ export default function PListBlock({ useLang, pub }) {
           {pub.map((p, index) => (
             <Grid item xs={12} md={3} key={index}>
               <Item>
-                <Link href={`/publications/${p.title_en}`}>
-                  <Box
-                    p={{ xs: 2, sm: 2 }}
-                    sx={{ fontSize: 14, fontWeight: 400 }}
-                  >
-                    {useLang ? (
-                      <>
-                        {/* Desktop thumbnail */}
-                        <Box
-                          sx={{
-                            backgroundColor: "none",
-                            width: { xs: "100%", md: "100%" },
-                            height: { xs: 200, md: 400 },
-                            position: "relative",
-                            display: { xs: "none", md: "block" },
-                          }}
-                        >
-                          <Image
-                            priority={true}
-                            src={p.img}
-                            fill
-                            alt="Picture of the artwork"
-                            style={{
-                              objectFit: "contain",
-                              objectPosition: "bottom",
+                <Link href={`/publications/${p.id}`}>
+                  <motion.div whileHover={{ scale: 1.1 }}>
+                    <Box
+                      p={{ xs: 2, sm: 2 }}
+                      sx={{
+                        fontSize: 14,
+                        fontWeight: 400,
+                      }}
+                    >
+                      {useLang ? (
+                        <>
+                          {/* Desktop thumbnail */}
+                          <Box
+                            sx={{
+                              backgroundColor: "none",
+                              width: { xs: "100%", md: "100%" },
+                              height: { xs: 200, md: 400 },
+                              position: "relative",
+                              display: { xs: "none", md: "block" },
+                              boxShadow:
+                                "rgba(0, 0, 0, 0.45) 0px 25px 20px -20px",
                             }}
-                            sizes="50vw"
-                          />
-                        </Box>
-                        {/* Mobile thumbnail */}
-                        <Box
-                          sx={{
-                            backgroundColor: "none",
-                            width: { xs: "100%" },
-                            height: { xs: 200 },
-                            position: "relative",
-                            display: { xs: "block", md: "none" },
-                          }}
-                        >
-                          <Image
-                            priority={true}
-                            src={p.img}
-                            fill
-                            alt="Picture of the artwork"
-                            style={{
-                              objectFit: "contain",
-                              objectPosition: "left",
+                          >
+                            <Image
+                              priority={true}
+                              src={`${process.env.DIRECTUS_URL}/assets/${p.cover.image.filename_disk}`}
+                              fill
+                              alt="Picture of the artwork"
+                              style={{
+                                objectFit: "contain",
+                                objectPosition: "bottom",
+                              }}
+                              sizes="50vw"
+                            />
+                          </Box>
+                          {/* Mobile thumbnail */}
+                          <Box
+                            sx={{
+                              backgroundColor: "none",
+                              width: { xs: "100%" },
+                              height: { xs: 200 },
+                              position: "relative",
+                              display: { xs: "block", md: "none" },
                             }}
-                            sizes="50vw"
-                          />
-                        </Box>
-                        <Box
-                          sx={{
-                            fontSize: { xs: 14, sm: 14 },
-                            fontWeight: 500,
-                          }}
-                          pb={1}
-                          pt={2}
-                        >
-                          {p.name_tw}
-                        </Box>
-                        <Box sx={{ fontSize: { xs: 18, sm: 18 } }}>
+                          >
+                            <Image
+                              priority={true}
+                              src={`${process.env.DIRECTUS_URL}/assets/${p.cover.image.filename_disk}`}
+                              fill
+                              alt="Picture of the artwork"
+                              style={{
+                                objectFit: "contain",
+                                objectPosition: "left",
+                              }}
+                              sizes="50vw"
+                            />
+                          </Box>
+                          <Box
+                            sx={{
+                              fontSize: { xs: 14, sm: 14 },
+                              fontWeight: 500,
+                            }}
+                            pb={1}
+                            pt={2}
+                          >
+                            <ArtistsNameTW artists={p.artists} />
+                          </Box>
+                          {/* <Box sx={{ fontSize: { xs: 18, sm: 18 } }}>
                           {p.title_tw}
-                        </Box>
-                      </>
-                    ) : (
-                      <>
-                        {/* Desktop thumbnail */}
-                        <Box
-                          sx={{
-                            backgroundColor: "none",
-                            width: { xs: "100%", md: "100%" },
-                            height: { xs: 200, md: 400 },
-                            position: "relative",
-                            display: { xs: "none", md: "block" },
-                          }}
-                        >
-                          <Image
-                            priority={true}
-                            src={p.img}
-                            fill
-                            alt="Picture of the artwork"
-                            style={{
-                              objectFit: "contain",
-                              objectPosition: "bottom",
+                        </Box> */}
+                        </>
+                      ) : (
+                        <>
+                          {/* Desktop thumbnail */}
+                          <Box
+                            sx={{
+                              backgroundColor: "none",
+                              width: { xs: "100%", md: "100%" },
+                              height: { xs: 200, md: 400 },
+                              position: "relative",
+                              display: { xs: "none", md: "block" },
                             }}
-                            sizes="50vw"
-                          />
-                        </Box>
-                        {/* Mobile thumbnail */}
-                        <Box
-                          sx={{
-                            backgroundColor: "none",
-                            width: { xs: "100%" },
-                            height: { xs: 200 },
-                            position: "relative",
-                            display: { xs: "block", md: "none" },
-                          }}
-                        >
-                          <Image
-                            priority={true}
-                            src={p.img}
-                            fill
-                            alt="Picture of the artwork"
-                            style={{
-                              objectFit: "contain",
-                              objectPosition: "left",
+                          >
+                            <Image
+                              priority={true}
+                              src={`${process.env.DIRECTUS_URL}/assets/${p.cover.image.filename_disk}`}
+                              fill
+                              alt="Picture of the artwork"
+                              style={{
+                                objectFit: "contain",
+                                objectPosition: "bottom",
+                              }}
+                              sizes="50vw"
+                            />
+                          </Box>
+                          {/* Mobile thumbnail */}
+                          <Box
+                            sx={{
+                              backgroundColor: "none",
+                              width: { xs: "100%" },
+                              height: { xs: 200 },
+                              position: "relative",
+                              display: { xs: "block", md: "none" },
                             }}
-                            sizes="50vw"
-                          />
-                        </Box>
-                        <Box
-                          sx={{
-                            fontSize: { xs: 14, sm: 14 },
-                            fontWeight: 500,
-                          }}
-                          pb={1}
-                          pt={2}
-                        >
-                          {p.name_en}
-                        </Box>
-                        <Box sx={{ fontStyle: "italic", fontSize: 18 }}>
+                          >
+                            <Image
+                              priority={true}
+                              src={`${process.env.DIRECTUS_URL}/assets/${p.cover.image.filename_disk}`}
+                              fill
+                              alt="Picture of the artwork"
+                              style={{
+                                objectFit: "contain",
+                                objectPosition: "left",
+                              }}
+                              sizes="50vw"
+                            />
+                          </Box>
+                          <Box
+                            sx={{
+                              fontSize: { xs: 14, sm: 14 },
+                              fontWeight: 500,
+                            }}
+                            pb={1}
+                            pt={2}
+                          >
+                            <ArtistsNameEN artists={p.artists} />
+                          </Box>
+                          {/* <Box sx={{ fontStyle: "italic", fontSize: 18 }}>
                           {p.title_en}
-                        </Box>
-                      </>
-                    )}
-                  </Box>
+                        </Box> */}
+                        </>
+                      )}
+                    </Box>
+                  </motion.div>
                 </Link>
               </Item>
             </Grid>

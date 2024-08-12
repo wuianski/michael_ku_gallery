@@ -1,5 +1,10 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Link from "next/link";
+/* Framer Motion */
+import { motion } from "framer-motion";
+/* Component */
+import ArtistsNameTW from "@/components/common/artistsNameTW";
+import ArtistsNameEN from "@/components/common/artistsNameEN";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -16,40 +21,50 @@ export default function AListBlock({ useLang, articles }) {
       <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
-          spacing={{ xs: 0, md: 0 }}
+          spacing={{ xs: 2, md: 4 }}
           columns={{ xs: 12, md: 12 }}
           pl={{ xs: 0, md: 10 }}
         >
           {articles.map((a, index) => (
             <Grid item xs={12} md={6} key={index}>
               <Item>
-                <Link href={`/articles/${index}`}>
-                  <Box
-                    p={{ xs: 1.4, sm: 2 }}
-                    sx={{ fontSize: 14, fontWeight: 400 }}
-                  >
-                    {useLang ? (
-                      <>
-                        <Box sx={{ fontWeight: 500 }} pb={1}>
-                          {a.title_tw}
-                        </Box>
-                        <Box sx={{ fontSize: 12, color: "#666" }}>
-                          <Box>{a.begin_exhibition}</Box>
-                          <Box>詳情</Box>
-                        </Box>
-                      </>
-                    ) : (
-                      <>
-                        <Box sx={{ fontWeight: 500 }} pb={1}>
-                          {a.title_en}
-                        </Box>
-                        <Box sx={{ fontSize: 12, color: "#666" }}>
-                          <Box>{a.begin_exhibition}</Box>
-                          <Box>More</Box>
-                        </Box>
-                      </>
-                    )}
-                  </Box>
+                <Link href={`/articles/${a.id}`}>
+                  <motion.div whileHover={{ scale: 1.1 }}>
+                    <Box
+                      p={{ xs: 1.4, sm: 2 }}
+                      sx={{ fontSize: 14, fontWeight: 400 }}
+                    >
+                      {useLang ? (
+                        <>
+                          <Box>
+                            <ArtistsNameTW artists={a.artists} />
+                            {a.artists.length === 0 ? <Box>谷公館</Box> : <></>}
+                          </Box>
+                          <Box sx={{ fontWeight: 500 }} pb={1}>
+                            {a.title_tw}
+                          </Box>
+                          <Box sx={{ fontSize: 12, color: "#666" }}>
+                            <Box>{new Date(a.date).toLocaleDateString()}</Box>
+                            <Box>詳情</Box>
+                          </Box>
+                        </>
+                      ) : (
+                        <>
+                          <Box>
+                            <ArtistsNameEN artists={a.artists} />
+                            {a.artists.length === 0 ? <Box>谷公館</Box> : <></>}
+                          </Box>
+                          <Box sx={{ fontWeight: 500 }} pb={1}>
+                            {a.title_en}
+                          </Box>
+                          <Box sx={{ fontSize: 12, color: "#666" }}>
+                            <Box>{new Date(a.date).toLocaleDateString()}</Box>
+                            <Box>More</Box>
+                          </Box>
+                        </>
+                      )}
+                    </Box>
+                  </motion.div>
                 </Link>
               </Item>
             </Grid>
