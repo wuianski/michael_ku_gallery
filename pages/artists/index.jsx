@@ -132,7 +132,7 @@ export async function getStaticProps() {
   const artists = await fetchData(
     `
       query  {
-          artists{
+          artists (filter:{isSign:{_eq:true}, status:{_eq:"published"} }){
             id,
             name_tw,
             name_en,
@@ -141,6 +141,7 @@ export async function getStaticProps() {
                 filename_disk
               }
             }
+     
           }
       }
       `,

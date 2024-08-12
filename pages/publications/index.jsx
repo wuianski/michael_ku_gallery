@@ -96,7 +96,7 @@ export async function getStaticProps() {
   const publications = await fetchData(
     `
       query  {
-          publications{
+          publications (sort:["sort","id"], filter:{status:{_eq:"published"}} ){
             id,
             title_tw,
             title_en,

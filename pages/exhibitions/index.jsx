@@ -137,7 +137,7 @@ export async function getStaticProps() {
     await fetchData(
       `
       query {
-        exhibitions (filter: { isCurrent: { _eq: true} }){
+        exhibitions (filter: { isCurrent: { _eq: true}, status:{_eq:"published"} }){
           id
           title_tw,
           title_en,
@@ -167,7 +167,7 @@ export async function getStaticProps() {
     await fetchData(
       `
       query {
-        exhibitions (filter: { isCurrent: { _eq: false} }){
+        exhibitions (filter: { isCurrent: { _eq: false}, status:{_eq:"published"} }, sort:["sort","-end_exhibition"] ){
           id
           title_tw,
           title_en,

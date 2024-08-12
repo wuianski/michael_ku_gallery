@@ -135,7 +135,7 @@ export async function getServerSideProps({ params }) {
   const exhibitions = await fetchData(
     `
       query {
-        exhibitions(filter:{id:{_eq:"${params.id}"}}) {
+        exhibitions(filter:{id:{_eq:"${params.id}"}, status:{_eq:"published"} }) {
           id
           title_tw,
           title_en,

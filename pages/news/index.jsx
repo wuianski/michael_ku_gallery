@@ -120,7 +120,7 @@ export async function getStaticProps() {
   const news = await fetchData(
     `
       query  {
-          news{
+          news (sort:["sort","-end_exhibition"], filter:{status:{_eq:"published"}} ) {
             id,
             title_tw,
             title_en,
