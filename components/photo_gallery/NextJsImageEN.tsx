@@ -44,6 +44,7 @@ export default function NextJsImageEN({
           left: 0,
           backgroundColor: "rgba(255, 255, 255, 0.5)",
         }}
+        className="en_font"
       >
         {photo.title_en}
       </div>

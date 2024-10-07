@@ -101,6 +101,7 @@ export default function PhotoGalleryEN({ photos }) {
         plugins={[Captions]}
         render={{ slide: LightBoxNextJsImage }}
         styles={{ container: { backgroundColor: "rgba(255, 255, 255, 1)" } }}
+        className="en_font"
       />
     </>
   );

@@ -1,11 +1,7 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-/* Fonts */
-import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
-const noto_serif = Noto_Serif({ subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+
 /* Components */
 import B2E from "@/components/common/begin2endDate";
 
@@ -23,7 +19,12 @@ export default function Exhibitions({ useLang, exhibitions }) {
   return (
     <>
       <Box pb={2} sx={{ color: "#666" }}>
-        {useLang ? "展覽" : "Exhibitions"}
+        {/* {useLang ? "展覽" : "Exhibitions"} */}
+        {useLang ? (
+          <Box className="tw_font">展覽</Box>
+        ) : (
+          <Box className="en_font">Exhibitions</Box>
+        )}
       </Box>
       <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 12, md: 12 }}>
         {exhibitions.map((a, index) => (
@@ -55,7 +56,10 @@ export default function Exhibitions({ useLang, exhibitions }) {
                   <Box pt={2}>
                     {useLang ? (
                       <>
-                        <Box sx={{ fontSize: 18, textAlign: "left" }}>
+                        <Box
+                          className="tw_font"
+                          sx={{ fontSize: 18, textAlign: "left" }}
+                        >
                           {a.exhibitions_id.title_tw}
                         </Box>
                         <B2E
@@ -66,6 +70,7 @@ export default function Exhibitions({ useLang, exhibitions }) {
                     ) : (
                       <>
                         <Box
+                          className="en_font"
                           sx={{
                             fontSize: 18,
                             textAlign: "left",

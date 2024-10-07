@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
+
   env: {
     GoogleMapsAPIKey: process.env.GoogleMapsAPIKey,
     DIRECTUS_URL: process.env.DIRECTUS_URL,
@@ -21,6 +23,20 @@ const nextConfig = {
       },
     ],
   },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/_next/:path*",
+  //       headers: [
+  //         {
+  //           key: "Access-Control-Allow-Origin",
+  //           value: "http://localhost:3000",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
+
 }
 
 module.exports = nextConfig

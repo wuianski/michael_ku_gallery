@@ -45,6 +45,7 @@ export default function NextJsImageTW({
           left: 0,
           backgroundColor: "rgba(255, 255, 255, 0.5)",
         }}
+        className="tw_font"
       >
         {photo.title_tw}
       </div>

@@ -1,11 +1,7 @@
 import { Box, Paper, Stack, styled, Grid, Container } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-/* Fonts */
-import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
-const noto_serif = Noto_Serif({ subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+
 /* Framer Motion */
 import { motion } from "framer-motion";
 /* Component */
@@ -97,7 +93,7 @@ export default function Exhibitions({
         > */}
         <Box
           p={2}
-          className={noto_serif.className}
+          // className="tw_font"
           sx={{
             fontSize: { xs: "18px", sm: "14px" },
             fontWeight: 400,
@@ -108,7 +104,12 @@ export default function Exhibitions({
           {/* 當期展覽 */}
           <Box pl={{ xs: 0, md: 12 }} pb={12} pt={2}>
             <Box pb={2} sx={{ color: "#666" }}>
-              {useLang ? "當期展覽" : "Current Exhibition"}
+              {/* {useLang ? "當期展覽" : "Current Exhibition"} */}
+              {useLang ? (
+                <Box className="tw_font">當期展覽</Box>
+              ) : (
+                <Box className="en_font">Current Exhibition</Box>
+              )}
             </Box>
             <CurrentExhibitions
               exhibitions={current_exhibitions.exhibitions}
@@ -118,7 +119,12 @@ export default function Exhibitions({
           {/* 過往展覽 */}
           <Box pl={{ xs: 0, md: 12 }}>
             <Box pb={2} sx={{ color: "#666" }}>
-              {useLang ? "過往展覽" : "Past Exhibitions"}
+              {/* {useLang ? "過往展覽" : "Past Exhibitions"} */}
+              {useLang ? (
+                <Box className="tw_font">過往展覽</Box>
+              ) : (
+                <Box className="en_font">Past Exhibitions</Box>
+              )}
             </Box>
             <PastExhibitions
               exhibitions={past_exhibitions.exhibitions}

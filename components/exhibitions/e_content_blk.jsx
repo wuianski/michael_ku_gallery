@@ -23,18 +23,20 @@ export default function EContentBlock({ useLang, e, index }) {
     <Box key={index}>
       {/* 1st row */}
       <Box pl={{ xs: 0, md: 12 }} pt={2} pb={6}>
-        <Box sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }} pb={1}>
+        <Box sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }} pb={1}>
           {useLang ? (
             <ArtistsNameTW artists={e.artists} />
           ) : (
             <ArtistsNameEN artists={e.artists} />
           )}
         </Box>
-        <Box sx={{ fontSize: 18 }}>
+        <Box sx={{ fontSize: 18, fontWeight: 600 }}>
           {useLang ? (
-            <Box>{e.title_tw}</Box>
+            <Box className="tw_font">{e.title_tw}</Box>
           ) : (
-            <Box sx={{ fontStyle: "italic" }}>{e.title_en}</Box>
+            <Box className="en_font" sx={{ fontStyle: "italic" }}>
+              {e.title_en}
+            </Box>
           )}
         </Box>
         <B2E begin={e.begin_exhibition} end={e.end_exhibition} />
@@ -52,6 +54,7 @@ export default function EContentBlock({ useLang, e, index }) {
             {useLang ? (
               <>
                 <Box
+                  className="tw_font"
                   sx={{ fontSize: { xs: 14, sm: 14 } }}
                   pt={0}
                   pb={8}
@@ -79,6 +82,7 @@ export default function EContentBlock({ useLang, e, index }) {
             ) : (
               <>
                 <Box
+                  className="en_font"
                   sx={{ fontSize: { xs: 14, sm: 14 } }}
                   pt={0}
                   pb={8}

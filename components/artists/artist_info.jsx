@@ -1,10 +1,5 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Image from "next/image";
-/* Fonts */
-import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
-const noto_serif = Noto_Serif({ subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -23,24 +18,21 @@ export default function ArtistInfo({ useLang, artist }) {
           {useLang ? (
             <>
               <Box
-                sx={{
-                  fontSize: { xs: 14, sm: 14 },
-                  fontWeight: 500,
-                }}
+                sx={{ fontSize: { xs: 14, sm: 24 }, fontWeight: 600 }}
+                className="tw_font w-400"
               >
                 {artist.name_tw}
               </Box>
               <Box
+                className="tw_font"
                 sx={{ fontSize: { xs: 14, sm: 14 } }}
                 pt={2}
                 pb={8}
                 dangerouslySetInnerHTML={{
                   __html: artist.bio_tw,
                 }}
-              >
-                {/* {artist.content_tw} */}
-              </Box>
-              <Box sx={{ fontSize: 12, cursor: "pointer" }}>
+              ></Box>
+              <Box className="tw_font" sx={{ fontSize: 12, cursor: "pointer" }}>
                 {artist.cv_tw && (
                   <Box pb={1}>
                     <a
@@ -63,24 +55,21 @@ export default function ArtistInfo({ useLang, artist }) {
           ) : (
             <>
               <Box
-                sx={{
-                  fontSize: { xs: 14, sm: 14 },
-                  fontWeight: 500,
-                }}
+                className="en_font w-400"
+                sx={{ fontSize: { xs: 14, sm: 24 }, fontWeight: 600 }}
               >
                 {artist.name_en}
               </Box>
               <Box
+                className="en_font"
                 sx={{ fontSize: { xs: 14, sm: 14 } }}
                 pt={2}
                 pb={8}
                 dangerouslySetInnerHTML={{
                   __html: artist.bio_en,
                 }}
-              >
-                {/* {artist.content_en} */}
-              </Box>
-              <Box sx={{ fontSize: 12, cursor: "pointer" }}>
+              ></Box>
+              <Box className="en_font" sx={{ fontSize: 12, cursor: "pointer" }}>
                 {artist.cv_en && (
                   <Box pb={1}>
                     <a

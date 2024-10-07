@@ -1,10 +1,6 @@
 import { Box, Paper, Stack, styled, Container } from "@mui/material";
 import React, { useState, useEffect, useMemo } from "react";
-/* Fonts */
-import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
-const noto_serif = Noto_Serif({ weight: "400", subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+
 /* Framer Motion */
 import { AnimatePresence, motion } from "framer-motion";
 /* Google Maps */
@@ -69,10 +65,10 @@ export default function About({ useLang, about }) {
         > */}
         <Box
           p={4}
-          className={noto_serif.className}
+          // className="tw_font"
           sx={{
             fontSize: { xs: "14px", sm: "14px" },
-            fontWeight: 400,
+            fontWeight: 600,
             letterSpacing: "0.88px",
             lineHeight: { xs: "1.5", sm: "1.5" },
             minHeight: "50vh",
@@ -84,14 +80,14 @@ export default function About({ useLang, about }) {
               <Box>
                 {useLang ? (
                   <Box
-                    className={noto_serif.className}
+                    className="tw_font"
                     dangerouslySetInnerHTML={{
                       __html: about.info_tw,
                     }}
                   ></Box>
                 ) : (
                   <Box
-                    className={baskervville.className}
+                    className="en_font"
                     dangerouslySetInnerHTML={{
                       __html: about.info_en,
                     }}
@@ -100,9 +96,9 @@ export default function About({ useLang, about }) {
               </Box>
               {/* <Box pt={10}>
                   {useLang ? (
-                    <Box className={noto_serif.className}>{subscribe_tw}</Box>
+                    <Box className="tw_font">{subscribe_tw}</Box>
                   ) : (
-                    <Box className={baskervville.className}>{subscribe_en}</Box>
+                    <Box className="en_font">{subscribe_en}</Box>
                   )}
                 </Box> */}
             </Item>

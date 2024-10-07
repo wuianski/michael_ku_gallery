@@ -38,28 +38,48 @@ export default function AListBlock({ useLang, articles }) {
                         <>
                           <Box>
                             <ArtistsNameTW artists={a.artists} />
-                            {a.artists.length === 0 ? <Box>谷公館</Box> : <></>}
+                            {a.artists.length === 0 ? (
+                              <Box className="tw_font" sx={{ fontWeight: 600 }}>
+                                谷公館
+                              </Box>
+                            ) : (
+                              <></>
+                            )}
                           </Box>
-                          <Box sx={{ fontWeight: 500 }} pb={1}>
+                          <Box
+                            sx={{ fontWeight: 600 }}
+                            pb={1}
+                            className="tw_font"
+                          >
                             {a.title_tw}
                           </Box>
                           <Box sx={{ fontSize: 12, color: "#666" }}>
                             <Box>{new Date(a.date).toLocaleDateString()}</Box>
-                            <Box>詳情</Box>
+                            <Box className="tw_font">詳情</Box>
                           </Box>
                         </>
                       ) : (
                         <>
                           <Box>
                             <ArtistsNameEN artists={a.artists} />
-                            {a.artists.length === 0 ? <Box>谷公館</Box> : <></>}
+                            {a.artists.length === 0 ? (
+                              <Box className="en_font" sx={{ fontWeight: 600 }}>
+                                Michael Ku Gallery
+                              </Box>
+                            ) : (
+                              <></>
+                            )}
                           </Box>
-                          <Box sx={{ fontWeight: 500 }} pb={1}>
+                          <Box
+                            sx={{ fontWeight: 600 }}
+                            pb={1}
+                            className="en_font"
+                          >
                             {a.title_en}
                           </Box>
                           <Box sx={{ fontSize: 12, color: "#666" }}>
                             <Box>{new Date(a.date).toLocaleDateString()}</Box>
-                            <Box>More</Box>
+                            <Box className="en_font">More</Box>
                           </Box>
                         </>
                       )}

@@ -8,13 +8,13 @@ export default function ArtistsNameEN({ artists }) {
         <Box component="span" key={index}>
           {index === artists.length - 1 ? (
             // <Link href={`/artists/${a.artists_id.id}`} passHref>
-            <Box mr={0.5} component="span" key={index}>
+            <Box mr={0.5} component="span" key={index} className="en_font">
               {a.artists_id.name_en}
             </Box>
           ) : (
             // </Link>
             // <Link href={`/artists/${a.artists_id.id}`} passHref>
-            <Box mr={0.5} component="span" key={index}>
+            <Box mr={0.5} component="span" key={index} className="en_font">
               {a.artists_id.name_en} /
             </Box>
             // </Link>

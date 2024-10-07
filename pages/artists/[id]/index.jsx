@@ -1,9 +1,5 @@
 import { Box, Paper, Stack, styled, Grid, Container } from "@mui/material";
-/* Fonts */
-import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
-const noto_serif = Noto_Serif({ subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+
 /* Framer Motion */
 import { motion } from "framer-motion";
 /* Component */
@@ -25,7 +21,7 @@ export default function Artist({ useLang, artists }) {
         > */}
         <Box
           p={2}
-          className={noto_serif.className}
+          // className="tw_font"
           sx={{
             fontSize: { xs: "18px", sm: "14px" },
             fontWeight: 400,

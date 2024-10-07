@@ -49,8 +49,13 @@ export default function ArtistsListBlk({ useLang, artists }) {
                           <>
                             <Box
                               id={index}
-                              sx={{ cursor: "pointer" }}
+                              sx={{
+                                cursor: "pointer",
+                                fontSize: 16,
+                                fontWeight: 600,
+                              }}
                               onMouseOver={() => setHoverId(index)}
+                              className="tw_font"
                             >
                               <motion.div whileHover={{ scale: 1.1 }}>
                                 {a.name_tw}
@@ -60,8 +65,13 @@ export default function ArtistsListBlk({ useLang, artists }) {
                         ) : (
                           <Box
                             id={index}
-                            sx={{ cursor: "pointer" }}
+                            sx={{
+                              cursor: "pointer",
+                              fontSize: 16,
+                              fontWeight: 600,
+                            }}
                             onMouseOver={() => setHoverId(index)}
+                            className="en_font"
                           >
                             <motion.div whileHover={{ scale: 1.1 }}>
                               {a.name_en}

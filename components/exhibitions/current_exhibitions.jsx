@@ -1,11 +1,7 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-/* Fonts */
-import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
-const noto_serif = Noto_Serif({ subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans = Noto_Sans({ weight: "400", subsets: ["latin"] });
+
 /* Framer Motion */
 import { motion } from "framer-motion";
 /* Components */
@@ -57,7 +53,7 @@ export default function CurrentExhibitions({ useLang, exhibitions }) {
                       </Box>
 
                       <Box
-                        sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
+                        sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
                         pb={1}
                         pt={2}
                       >
@@ -67,11 +63,15 @@ export default function CurrentExhibitions({ useLang, exhibitions }) {
                           <ArtistsNameEN artists={e.artists} />
                         )}
                       </Box>
-                      <Box sx={{ fontSize: { xs: 18, sm: 18 } }}>
+                      <Box
+                        sx={{ fontSize: { xs: 18, sm: 18 }, fontWeight: 600 }}
+                      >
                         {useLang ? (
-                          <Box>{e.title_tw}</Box>
+                          <Box className="tw_font">{e.title_tw}</Box>
                         ) : (
-                          <Box sx={{ fontStyle: "italic" }}>{e.title_en}</Box>
+                          <Box className="en_font" sx={{ fontStyle: "italic" }}>
+                            {e.title_en}
+                          </Box>
                         )}
                       </Box>
                       <B2E begin={e.begin_exhibition} end={e.end_exhibition} />

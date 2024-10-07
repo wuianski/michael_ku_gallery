@@ -2,17 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 /* MUI */
 import { Box } from "@mui/material";
-/* Fonts */
-import {
-  Noto_Serif,
-  Baskervville,
-  Noto_Sans_TC,
-  Noto_Serif_TC,
-} from "next/font/google";
-const noto_serif = Noto_Serif({ subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans_tc = Noto_Sans_TC({ subsets: ["latin"] });
-const noto_serif_tc = Noto_Serif_TC({ weight: "400", subsets: ["latin"] });
 /* Fetch Data */
 import fetchData from "@/lib/api";
 /* Component */
@@ -40,7 +29,12 @@ export default function Index({ useLang, current_exhibitions }) {
           </>
         ) : (
           <Box sx={{ color: "#666" }}>
-            {useLang ? "目前無展覽" : "No current exhibition"}
+            {/* {useLang ? "目前無展覽" : "No current exhibition"} */}
+            {useLang ? (
+              <Box className="tw_font">目前無展覽</Box>
+            ) : (
+              <Box className="en_font">No current exhibition</Box>
+            )}
           </Box>
         )}
       </Box>

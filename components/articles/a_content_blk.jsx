@@ -24,20 +24,29 @@ export default function AContentBlock({ useLang, articles }) {
           {useLang ? (
             <>
               <Box
-                sx={{
-                  fontSize: { xs: 14, sm: 14 },
-                  fontWeight: 500,
-                }}
+                sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
                 pb={1}
                 pt={2}
               >
                 <ArtistsNameTW artists={articles.artists} />
+                {articles.artists.length === 0 ? (
+                  <Box className="tw_font">谷公館</Box>
+                ) : (
+                  <></>
+                )}
               </Box>
-              <Box sx={{ fontSize: 18 }}>{articles.title_tw}</Box>
-              <Box sx={{ fontSize: 12, color: "#666" }}>
+              <Box
+                pb={1}
+                className="tw_font"
+                sx={{ fontSize: 18, fontWeight: 600 }}
+              >
+                {articles.title_tw}
+              </Box>
+              <Box className="tw_font" sx={{ fontSize: 12, color: "#666" }}>
                 {new Date(articles.date).toLocaleDateString()}
               </Box>
               <Box
+                className="tw_font"
                 sx={{ fontSize: 14 }}
                 pt={2}
                 dangerouslySetInnerHTML={{
@@ -48,20 +57,29 @@ export default function AContentBlock({ useLang, articles }) {
           ) : (
             <>
               <Box
-                sx={{
-                  fontSize: { xs: 14, sm: 14 },
-                  fontWeight: 500,
-                }}
+                sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
                 pb={1}
                 pt={2}
               >
                 <ArtistsNameEN artists={articles.artists} />
+                {articles.artists.length === 0 ? (
+                  <Box className="en_font">Michael Ku Gallery</Box>
+                ) : (
+                  <></>
+                )}
               </Box>
-              <Box sx={{ fontSize: 18 }}>{articles.title_en}</Box>
-              <Box sx={{ fontSize: 12, color: "#666" }}>
+              <Box
+                pb={1}
+                className="en_font"
+                sx={{ fontSize: 18, fontWeight: 600 }}
+              >
+                {articles.title_en}
+              </Box>
+              <Box className="en_font" sx={{ fontSize: 12, color: "#666" }}>
                 {new Date(articles.date).toLocaleDateString()}
               </Box>
               <Box
+                className="en_font"
                 sx={{ fontSize: 14 }}
                 pt={2}
                 dangerouslySetInnerHTML={{

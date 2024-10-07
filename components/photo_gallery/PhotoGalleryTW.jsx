@@ -95,6 +95,7 @@ export default function PhotoGalleryTW({ photos }) {
         plugins={[Captions]}
         render={{ slide: LightBoxNextJsImage }}
         styles={{ container: { backgroundColor: "rgba(255, 255, 255, 1)" } }}
+        className="tw_font"
       />
     </>
   );

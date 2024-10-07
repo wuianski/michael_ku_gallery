@@ -44,14 +44,22 @@ export default function NListBlock({ useLang, news }) {
                           <Box
                             sx={{
                               fontSize: { xs: 14, sm: 14 },
-                              fontWeight: 500,
+                              fontWeight: 600,
                             }}
                             pb={1}
                           >
                             <ArtistsNameTW artists={n.artists} />
-                            {n.artists.length === 0 ? <Box>谷公館</Box> : <></>}
+                            {n.artists.length === 0 ? (
+                              <Box className="tw_font">谷公館</Box>
+                            ) : (
+                              <></>
+                            )}
                           </Box>
-                          <Box sx={{ fontWeight: 500 }} pb={1}>
+                          <Box
+                            className="tw_font"
+                            sx={{ fontWeight: 600 }}
+                            pb={1}
+                          >
                             {n.title_tw}
                           </Box>
                           <Box sx={{ fontSize: 12, color: "#666" }}>
@@ -59,7 +67,7 @@ export default function NListBlock({ useLang, news }) {
                               begin={n.begin_exhibition}
                               end={n.end_exhibition}
                             />
-                            <Box>詳情</Box>
+                            <Box className="tw_font">詳情</Box>
                           </Box>
                         </>
                       ) : (
@@ -67,18 +75,22 @@ export default function NListBlock({ useLang, news }) {
                           <Box
                             sx={{
                               fontSize: { xs: 14, sm: 14 },
-                              fontWeight: 500,
+                              fontWeight: 600,
                             }}
                             pb={1}
                           >
                             <ArtistsNameEN artists={n.artists} />
                             {n.artists.length === 0 ? (
-                              <Box>Michael Ku Gallery</Box>
+                              <Box className="en_font">Michael Ku Gallery</Box>
                             ) : (
                               <></>
                             )}
                           </Box>
-                          <Box sx={{ fontWeight: 500 }} pb={1}>
+                          <Box
+                            className="en_font"
+                            sx={{ fontWeight: 600 }}
+                            pb={1}
+                          >
                             {n.title_en}
                           </Box>
                           <Box sx={{ fontSize: 12, color: "#666" }}>
@@ -86,7 +98,7 @@ export default function NListBlock({ useLang, news }) {
                               begin={n.begin_exhibition}
                               end={n.end_exhibition}
                             />
-                            <Box>More</Box>
+                            <Box className="en_font">More</Box>
                           </Box>
                         </>
                       )}

@@ -18,22 +18,25 @@ export default function PContentBlock({ useLang, pub, index }) {
   // console.log(pub);
   return (
     <Box key={index}>
-      <Box sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }} pb={1} pt={2}>
+      <Box sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }} pb={1} pt={2}>
         {useLang ? (
           <ArtistsNameTW artists={pub.artists} />
         ) : (
           <ArtistsNameEN artists={pub.artists} />
         )}
       </Box>
-      <Box sx={{ fontSize: 18 }} pb={2}>
+      <Box sx={{ fontSize: 18, fontWeight: 600 }} pb={2}>
         {useLang ? (
-          <Box>{pub.title_tw}</Box>
+          <Box className="tw_font">{pub.title_tw}</Box>
         ) : (
-          <Box sx={{ fontStyle: "italic" }}>{pub.title_en}</Box>
+          <Box className="en_font" sx={{ fontStyle: "italic" }}>
+            {pub.title_en}
+          </Box>
         )}
       </Box>
       {useLang ? (
         <Box
+          className="tw_font"
           sx={{ fontSize: 14 }}
           dangerouslySetInnerHTML={{
             __html: pub.content_tw,
@@ -41,6 +44,7 @@ export default function PContentBlock({ useLang, pub, index }) {
         />
       ) : (
         <Box
+          className="en_font"
           sx={{ fontSize: 14 }}
           dangerouslySetInnerHTML={{
             __html: pub.content_en,

@@ -25,15 +25,22 @@ export default function NContentBlock({ useLang, news }) {
           {useLang ? (
             <>
               <Box
-                sx={{ ontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
+                sx={{ ontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
                 pb={1}
                 pt={2}
               >
                 <ArtistsNameTW artists={news.artists} />
               </Box>
-              <Box sx={{ fontSize: 18 }}>{news.title_tw}</Box>
+              <Box
+                pb={1}
+                className="tw_font"
+                sx={{ fontSize: 18, fontWeight: 600 }}
+              >
+                {news.title_tw}
+              </Box>
               <B2E begin={news.begin_exhibition} end={news.end_exhibition} />
               <Box
+                className="tw_font"
                 sx={{ fontSize: 14 }}
                 pt={2}
                 dangerouslySetInnerHTML={{ __html: news.content_tw }}
@@ -42,15 +49,22 @@ export default function NContentBlock({ useLang, news }) {
           ) : (
             <>
               <Box
-                sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
+                sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
                 pb={1}
                 pt={2}
               >
                 <ArtistsNameEN artists={news.artists} />
               </Box>
-              <Box sx={{ fontSize: 18 }}>{news.title_en}</Box>
+              <Box
+                pb={1}
+                className="en_font"
+                sx={{ fontSize: 18, fontWeight: 600 }}
+              >
+                {news.title_en}
+              </Box>
               <B2E begin={news.begin_exhibition} end={news.end_exhibition} />
               <Box
+                className="en_font"
                 sx={{ fontSize: 14 }}
                 pt={2}
                 dangerouslySetInnerHTML={{ __html: news.content_en }}

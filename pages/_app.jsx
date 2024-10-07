@@ -1,7 +1,8 @@
+import "../styles/globals.css";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import "@/styles/globals.css";
+
 import dynamic from "next/dynamic";
 import Link from "next/link";
 /* Component */
@@ -11,11 +12,7 @@ import Footer from "@/components/app/footer";
 import { Box, Paper, Stack, styled, Divider } from "@mui/material";
 /* Framer Motion */
 import { AnimatePresence, motion } from "framer-motion";
-/* Fonts */
-import { Noto_Serif, Baskervville, Noto_Sans } from "next/font/google";
-const noto_serif = Noto_Serif({ weight: "500", subsets: ["latin"] });
-const baskervville = Baskervville({ weight: "400", subsets: ["latin"] });
-const noto_sans = Noto_Sans({ weight: "500", subsets: ["latin"] });
+
 /* Icons */
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -40,6 +37,8 @@ const Nav_item_m = styled(Paper)(({ theme }) => ({
 }));
 
 function App({ Component, pageProps }) {
+  // const getLayout = Component.getLayout || ((page) => page);
+
   const router = useRouter();
   const [useLang, setLang] = useState(true);
   const show_state = {
@@ -47,41 +46,67 @@ function App({ Component, pageProps }) {
     show: { opacity: 1, display: "block" },
     transition: { duration: 0.5 },
   };
+  /*** click on tw ***/
+  const click_on_tw = {
+    tw: { opacity: 0 },
+    en: { opacity: 1 },
+  };
+  /*** click on en ***/
+  const click_on_en = {
+    tw: { opacity: 1 },
+    en: { opacity: 0 },
+  };
   const [nav_m, setNav_m] = useState(false);
 
   return (
     <>
       <Head>
-        <title>Michael Ku Gallery</title>
         <meta
-          name="description"
-          content="Michael Ku Gallery Official Website"
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
       <Nav useLang={useLang} />
       {/* Desktop - language switch */}
       <Box sx={{ display: { xs: "none", md: "block" }, cursor: "pointer" }}>
-        <motion.div variants={show_state} animate={useLang ? "show" : "hide"}>
+        <motion.div
+          // variants={show_state}
+          // animate={useLang ? "show" : "hide"}
+          // style={{ willChange: "unset" }}
+          variants={click_on_en}
+          initial="tw"
+          animate={useLang ? "tw" : "en"}
+          exit="tw"
+          style={{ willChange: "unset" }}
+        >
           <Box
             sx={{
               position: "fixed",
               top: 50,
               right: 30,
-              zIndex: 100,
+              zIndex: 999,
               textTransform: "uppercase",
               fontSize: 14,
             }}
             onClick={() => setLang(false)}
-            className={baskervville.className}
+            className="en_font"
           >
             <motion.div whileHover={{ scale: 1.1 }}>English</motion.div>
           </Box>
         </motion.div>
 
-        <motion.div variants={show_state} animate={useLang ? "hide" : "show"}>
+        <motion.div
+          // variants={show_state}
+          // animate={useLang ? "hide" : "show"}
+          // style={{ willChange: "unset" }}
+          variants={click_on_tw}
+          initial="tw"
+          animate={useLang ? "tw" : "en"}
+          exit="tw"
+          style={{ willChange: "unset" }}
+        >
           <Box
             sx={{
               position: "fixed",
@@ -91,7 +116,7 @@ function App({ Component, pageProps }) {
               fontSize: 14,
             }}
             onClick={() => setLang(true)}
-            className={noto_serif.className}
+            className="tw_font"
           >
             <motion.div whileHover={{ scale: 1.1 }}>中文</motion.div>
           </Box>
@@ -143,9 +168,9 @@ function App({ Component, pageProps }) {
               >
                 <Link href="/artists">
                   {useLang ? (
-                    <Box className={noto_sans.className}>藝術家</Box>
+                    <Box className="tw_font">藝術家</Box>
                   ) : (
-                    <Box className={noto_sans.className}>ARTISTS</Box>
+                    <Box className="en_font">ARTISTS</Box>
                   )}
                 </Link>
               </Nav_item_m>
@@ -156,9 +181,9 @@ function App({ Component, pageProps }) {
               >
                 <Link href="/exhibitions">
                   {useLang ? (
-                    <Box className={noto_sans.className}>展覽</Box>
+                    <Box className="tw_font">展覽</Box>
                   ) : (
-                    <Box className={noto_sans.className}>EXHIBITIONS</Box>
+                    <Box className="en_font">EXHIBITIONS</Box>
                   )}
                 </Link>
               </Nav_item_m>
@@ -169,9 +194,9 @@ function App({ Component, pageProps }) {
               >
                 <Link href="/publications">
                   {useLang ? (
-                    <Box className={noto_sans.className}>出版</Box>
+                    <Box className="tw_font">出版</Box>
                   ) : (
-                    <Box className={noto_sans.className}>PUBLICATIONS</Box>
+                    <Box className="en_font">PUBLICATIONS</Box>
                   )}
                 </Link>
               </Nav_item_m>
@@ -182,9 +207,9 @@ function App({ Component, pageProps }) {
               >
                 <Link href="/news">
                   {useLang ? (
-                    <Box className={noto_sans.className}>新聞</Box>
+                    <Box className="tw_font">新聞</Box>
                   ) : (
-                    <Box className={noto_sans.className}>NEWS</Box>
+                    <Box className="en_font">NEWS</Box>
                   )}
                 </Link>
               </Nav_item_m>
@@ -195,9 +220,9 @@ function App({ Component, pageProps }) {
               >
                 <Link href="/articles">
                   {useLang ? (
-                    <Box className={noto_sans.className}>文章</Box>
+                    <Box className="tw_font">文章</Box>
                   ) : (
-                    <Box className={noto_sans.className}>ARTICLES</Box>
+                    <Box className="en_font">ARTICLES</Box>
                   )}
                 </Link>
               </Nav_item_m>
@@ -208,9 +233,9 @@ function App({ Component, pageProps }) {
               >
                 <Link href="/about">
                   {useLang ? (
-                    <Box className={noto_sans.className}>關於</Box>
+                    <Box className="tw_font">關於</Box>
                   ) : (
-                    <Box className={noto_sans.className}>ABOUT</Box>
+                    <Box className="en_font">ABOUT</Box>
                   )}
                 </Link>
               </Nav_item_m>
@@ -224,7 +249,7 @@ function App({ Component, pageProps }) {
                       setLang(false);
                       setNav_m(false);
                     }}
-                    className={baskervville.className}
+                    className="en_font"
                   >
                     English
                   </Box>
@@ -235,7 +260,7 @@ function App({ Component, pageProps }) {
                       setLang(true);
                       setNav_m(false);
                     }}
-                    className={noto_serif.className}
+                    className="tw_font"
                   >
                     中文
                   </Box>
@@ -250,20 +275,20 @@ function App({ Component, pageProps }) {
       {/* Page */}
       {/* important to add key for make it work */}
       <Box pt={2}>
-        {/* <AnimatePresence> */}
-        <motion.div
-          key={router.route}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.5 } }}
-          exit={{ opacity: 0, transition: { duration: 0.5 } }}
-          className="content"
-        >
-          <Component key={router.route} {...pageProps} useLang={useLang} />
-        </motion.div>
-        {/* </AnimatePresence> */}
+        <AnimatePresence>
+          <motion.div
+            key={router.route}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.5 } }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+            className="content"
+          >
+            <Component key={router.route} {...pageProps} useLang={useLang} />
+          </motion.div>
+        </AnimatePresence>
       </Box>
       {/* Footer */}
-      <Box className={noto_serif.className} pt={12} pb={6}>
+      <Box className="en_font" pt={12} pb={6}>
         <Footer />
       </Box>
     </>
