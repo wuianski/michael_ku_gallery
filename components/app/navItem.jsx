@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 /* Framer Motion */
-import { motion } from "framer-motion";
+import { motion, useWillChange } from "framer-motion";
 
 const Item = styled(Paper)(({ theme }) => ({
   background: "none",
@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   width: "max-content",
   textAlign: "center",
   fontSize: "14px",
-  // fontWeight: "600",
+  fontWeight: "600",
   lineHeight: "1.5",
   letterSpacing: "0.88px",
 
@@ -21,17 +21,22 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function NavItem({ useLang }) {
+  const willChange = useWillChange();
   return (
     <>
       <Item>
         <Link href="/artists">
           {useLang ? (
             <Box className="tw_font">
-              <motion.div whileHover={{ scale: 1.1 }}>藝術家</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                藝術家
+              </motion.div>
             </Box>
           ) : (
             <Box className="en_font">
-              <motion.div whileHover={{ scale: 1.1 }}>ARTISTS</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                ARTISTS
+              </motion.div>
             </Box>
           )}
         </Link>
@@ -40,11 +45,15 @@ export default function NavItem({ useLang }) {
         <Link href="/exhibitions">
           {useLang ? (
             <Box className="tw_font">
-              <motion.div whileHover={{ scale: 1.1 }}>展覽</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                展覽
+              </motion.div>
             </Box>
           ) : (
             <Box className="en_font">
-              <motion.div whileHover={{ scale: 1.1 }}>EXHIBITIONS</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                EXHIBITIONS
+              </motion.div>
             </Box>
           )}
         </Link>
@@ -53,11 +62,15 @@ export default function NavItem({ useLang }) {
         <Link href="/publications">
           {useLang ? (
             <Box className="tw_font">
-              <motion.div whileHover={{ scale: 1.1 }}>出版</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                出版
+              </motion.div>
             </Box>
           ) : (
             <Box className="en_font">
-              <motion.div whileHover={{ scale: 1.1 }}>PUBLICATIONS</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                PUBLICATIONS
+              </motion.div>
             </Box>
           )}
         </Link>
@@ -66,11 +79,15 @@ export default function NavItem({ useLang }) {
         <Link href="/news">
           {useLang ? (
             <Box className="tw_font">
-              <motion.div whileHover={{ scale: 1.1 }}>新聞</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                新聞
+              </motion.div>
             </Box>
           ) : (
             <Box className="en_font">
-              <motion.div whileHover={{ scale: 1.1 }}>NEWS</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                NEWS
+              </motion.div>
             </Box>
           )}
         </Link>
@@ -79,11 +96,15 @@ export default function NavItem({ useLang }) {
         <Link href="/articles">
           {useLang ? (
             <Box className="tw_font">
-              <motion.div whileHover={{ scale: 1.1 }}>文章</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                文章
+              </motion.div>
             </Box>
           ) : (
             <Box className="en_font">
-              <motion.div whileHover={{ scale: 1.1 }}>ARTICLES</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                ARTICLES
+              </motion.div>
             </Box>
           )}
         </Link>
@@ -92,11 +113,15 @@ export default function NavItem({ useLang }) {
         <Link href="/about">
           {useLang ? (
             <Box className="tw_font">
-              <motion.div whileHover={{ scale: 1.1 }}>關於</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                關於
+              </motion.div>
             </Box>
           ) : (
             <Box className="en_font">
-              <motion.div whileHover={{ scale: 1.1 }}>ABOUT</motion.div>
+              <motion.div whileHover={{ scale: 1.1 }} style={{ willChange }}>
+                ABOUT
+              </motion.div>
             </Box>
           )}
         </Link>
