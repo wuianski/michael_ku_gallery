@@ -3,7 +3,7 @@ import React, { useState, useEffect, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 /* Framer Motion */
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useWillChange } from "framer-motion";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
@@ -18,6 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function ArtistsListBlk({ useLang, artists }) {
+  const willChange = useWillChange();
   const [hoverId, setHoverId] = useState(0);
   // const [renderSrc, setRenderSrc] = useState(artists[hoverId].img);
   const [renderSrc, setRenderSrc] = useState(
@@ -57,7 +58,11 @@ export default function ArtistsListBlk({ useLang, artists }) {
                               onMouseOver={() => setHoverId(index)}
                               className="tw_font"
                             >
-                              <motion.div whileHover={{ scale: 1.1 }}>
+                              <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ type: "spring" }}
+                                style={{ willChange }}
+                              >
                                 {a.name_tw}
                               </motion.div>
                             </Box>
@@ -73,7 +78,11 @@ export default function ArtistsListBlk({ useLang, artists }) {
                             onMouseOver={() => setHoverId(index)}
                             className="en_font"
                           >
-                            <motion.div whileHover={{ scale: 1.1 }}>
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              transition={{ type: "spring" }}
+                              style={{ willChange }}
+                            >
                               {a.name_en}
                             </motion.div>
                           </Box>

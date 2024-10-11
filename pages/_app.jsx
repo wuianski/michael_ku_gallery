@@ -11,7 +11,7 @@ import Footer from "@/components/app/footer";
 /* MUI */
 import { Box, Paper, Stack, styled, Divider } from "@mui/material";
 /* Framer Motion */
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useWillChange } from "framer-motion";
 
 /* Icons */
 import MenuIcon from "@mui/icons-material/Menu";
@@ -37,6 +37,7 @@ const Nav_item_m = styled(Paper)(({ theme }) => ({
 }));
 
 function App({ Component, pageProps }) {
+  const willChange = useWillChange();
   // const getLayout = Component.getLayout || ((page) => page);
 
   const router = useRouter();
@@ -93,7 +94,13 @@ function App({ Component, pageProps }) {
             onClick={() => setLang(false)}
             className="en_font"
           >
-            <motion.div whileHover={{ scale: 1.1 }}>English</motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring" }}
+              style={{ willChange }}
+            >
+              English
+            </motion.div>
           </Box>
         </motion.div>
 
@@ -118,7 +125,13 @@ function App({ Component, pageProps }) {
             onClick={() => setLang(true)}
             className="tw_font"
           >
-            <motion.div whileHover={{ scale: 1.1 }}>中文</motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring" }}
+              style={{ willChange }}
+            >
+              中文
+            </motion.div>
           </Box>
         </motion.div>
       </Box>
@@ -213,7 +226,7 @@ function App({ Component, pageProps }) {
                   )}
                 </Link>
               </Nav_item_m>
-              <Nav_item_m
+              {/* <Nav_item_m
                 onClick={() => {
                   setNav_m(false);
                 }}
@@ -225,7 +238,7 @@ function App({ Component, pageProps }) {
                     <Box className="en_font">ARTICLES</Box>
                   )}
                 </Link>
-              </Nav_item_m>
+              </Nav_item_m> */}
               <Nav_item_m
                 onClick={() => {
                   setNav_m(false);

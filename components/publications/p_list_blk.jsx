@@ -2,7 +2,7 @@ import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 /* Framer Motion */
-import { motion } from "framer-motion";
+import { motion, useWillChange } from "framer-motion";
 /* Component */
 import ArtistsNameTW from "@/components/common/artistsNameTWNoLink";
 import ArtistsNameEN from "@/components/common/artistsNameENNoLink";
@@ -17,6 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function PListBlock({ useLang, pub }) {
+  const willChange = useWillChange();
   return (
     <Box sx={{ flexGrow: 1 }} mt={-10}>
       <Grid
@@ -28,7 +29,11 @@ export default function PListBlock({ useLang, pub }) {
         {pub.map((p, index) => (
           <Grid item xs={12} md={3} key={index}>
             <Item>
-              <motion.div whileHover={{ scale: 1.05 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring" }}
+                style={{ willChange }}
+              >
                 <Link href={`/publications/${p.id}`} passHref>
                   <Box
                     p={{ xs: 2, sm: 2 }}

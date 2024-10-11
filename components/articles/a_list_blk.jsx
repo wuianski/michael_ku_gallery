@@ -1,7 +1,7 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Link from "next/link";
 /* Framer Motion */
-import { motion } from "framer-motion";
+import { motion, useWillChange } from "framer-motion";
 /* Component */
 import ArtistsNameTW from "@/components/common/artistsNameTW";
 import ArtistsNameEN from "@/components/common/artistsNameEN";
@@ -16,6 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AListBlock({ useLang, articles }) {
+  const willChange = useWillChange();
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -29,7 +30,11 @@ export default function AListBlock({ useLang, articles }) {
             <Grid item xs={12} md={6} key={index}>
               <Item>
                 <Link href={`/articles/${a.id}`}>
-                  <motion.div whileHover={{ scale: 1.05 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring" }}
+                    style={{ willChange }}
+                  >
                     <Box
                       p={{ xs: 1.4, sm: 2 }}
                       sx={{ fontSize: 14, fontWeight: 400 }}

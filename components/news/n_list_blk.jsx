@@ -1,7 +1,7 @@
 import { Box, Paper, Stack, styled, Grid } from "@mui/material";
 import Link from "next/link";
 /* Framer Motion */
-import { motion } from "framer-motion";
+import { motion, useWillChange } from "framer-motion";
 /* Components */
 import B2E from "@/components/common/begin2endDate";
 import ArtistsNameTW from "@/components/common/artistsNameTWNoLink";
@@ -17,6 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function NListBlock({ useLang, news }) {
+  const willChange = useWillChange();
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -30,7 +31,11 @@ export default function NListBlock({ useLang, news }) {
             <Grid item xs={12} md={6} key={index}>
               <Item>
                 <Link href={`/news/${n.id}`}>
-                  <motion.div whileHover={{ scale: 1.05 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring" }}
+                    style={{ willChange }}
+                  >
                     <Box
                       p={{ xs: 1.4, sm: 2 }}
                       sx={{

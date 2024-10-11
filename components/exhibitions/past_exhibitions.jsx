@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 /* Framer Motion */
-import { motion } from "framer-motion";
+import { motion, useWillChange } from "framer-motion";
 /* Components */
 import B2E from "@/components/common/begin2endDate";
 import ArtistsNameTW from "@/components/common/artistsNameTWNoLink";
@@ -19,6 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function PastExhibitions({ useLang, exhibitions }) {
+  const willChange = useWillChange();
   return (
     <>
       <Grid container spacing={{ xs: 6, md: 12 }} columns={{ xs: 12, md: 12 }}>
@@ -26,7 +27,11 @@ export default function PastExhibitions({ useLang, exhibitions }) {
           <Grid item xs={12} md={4} key={index}>
             <Item>
               <Link href={`/exhibitions/${e.id}`}>
-                <motion.div whileHover={{ scale: 1.05 }}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring" }}
+                  style={{ willChange }}
+                >
                   <Box sx={{ fontSize: 14, fontWeight: 400 }}>
                     <Box
                       sx={{
