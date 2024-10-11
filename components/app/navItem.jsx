@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   width: "max-content",
   textAlign: "center",
   fontSize: "14px",
-  fontWeight: "600",
+  fontWeight: "400",
   lineHeight: "1.5",
   letterSpacing: "0.88px",
 
@@ -27,9 +27,9 @@ export default function NavItem({ useLang }) {
         <Link href="/artists">
           <motion.div whileHover={{ scale: 1.1 }}>
             {useLang ? (
-              <Box className="tw_font">藝術家</Box>
+              <Box className="tw_font w-600">藝術家</Box>
             ) : (
-              <Box className="en_font">ARTISTS</Box>
+              <Box className="en_font w-600">ARTISTS</Box>
             )}
           </motion.div>
         </Link>
@@ -38,9 +38,9 @@ export default function NavItem({ useLang }) {
         <Link href="/exhibitions">
           <motion.div whileHover={{ scale: 1.1 }}>
             {useLang ? (
-              <Box className="tw_font">展覽</Box>
+              <Box className="tw_font w-600">展覽</Box>
             ) : (
-              <Box className="en_font">EXHIBITIONS</Box>
+              <Box className="en_font w-600">EXHIBITIONS</Box>
             )}
           </motion.div>
         </Link>
@@ -49,9 +49,9 @@ export default function NavItem({ useLang }) {
         <Link href="/publications">
           <motion.div whileHover={{ scale: 1.1 }}>
             {useLang ? (
-              <Box className="tw_font">出版</Box>
+              <Box className="tw_font w-600">出版</Box>
             ) : (
-              <Box className="en_font">PUBLICATIONS</Box>
+              <Box className="en_font w-600">PUBLICATIONS</Box>
             )}
           </motion.div>
         </Link>
@@ -60,9 +60,9 @@ export default function NavItem({ useLang }) {
         <Link href="/news">
           <motion.div whileHover={{ scale: 1.1 }}>
             {useLang ? (
-              <Box className="tw_font">新聞</Box>
+              <Box className="tw_font w-600">新聞</Box>
             ) : (
-              <Box className="en_font">NEWS</Box>
+              <Box className="en_font w-600">NEWS</Box>
             )}
           </motion.div>
         </Link>
@@ -71,9 +71,9 @@ export default function NavItem({ useLang }) {
         <Link href="/articles">
           <motion.div whileHover={{ scale: 1.1 }}>
             {useLang ? (
-              <Box className="tw_font">文章</Box>
+              <Box className="tw_font w-600">文章</Box>
             ) : (
-              <Box className="en_font">ARTICLES</Box>
+              <Box className="en_font w-600">ARTICLES</Box>
             )}
           </motion.div>
         </Link>
@@ -82,9 +82,9 @@ export default function NavItem({ useLang }) {
         <Link href="/about">
           <motion.div whileHover={{ scale: 1.1 }}>
             {useLang ? (
-              <Box className="tw_font">關於</Box>
+              <Box className="tw_font w-600">關於</Box>
             ) : (
-              <Box className="en_font">ABOUT</Box>
+              <Box className="en_font w-600">ABOUT</Box>
             )}
           </motion.div>
         </Link>
