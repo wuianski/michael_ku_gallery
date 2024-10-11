@@ -68,7 +68,7 @@ export default function About({ useLang, about }) {
           // className="tw_font"
           sx={{
             fontSize: { xs: "14px", sm: "14px" },
-            fontWeight: 600,
+            fontWeight: 500,
             letterSpacing: "0.88px",
             lineHeight: { xs: "1.5", sm: "1.5" },
             minHeight: "50vh",

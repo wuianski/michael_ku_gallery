@@ -25,7 +25,7 @@ export default function NContentBlock({ useLang, news }) {
           {useLang ? (
             <>
               <Box
-                sx={{ ontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
+                sx={{ ontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
                 pb={1}
                 pt={2}
               >
@@ -34,7 +34,7 @@ export default function NContentBlock({ useLang, news }) {
               <Box
                 pb={1}
                 className="tw_font"
-                sx={{ fontSize: 18, fontWeight: 600 }}
+                sx={{ fontSize: 18, fontWeight: 500 }}
               >
                 {news.title_tw}
               </Box>
@@ -49,7 +49,7 @@ export default function NContentBlock({ useLang, news }) {
           ) : (
             <>
               <Box
-                sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
+                sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
                 pb={1}
                 pt={2}
               >
@@ -58,7 +58,7 @@ export default function NContentBlock({ useLang, news }) {
               <Box
                 pb={1}
                 className="en_font"
-                sx={{ fontSize: 18, fontWeight: 600 }}
+                sx={{ fontSize: 18, fontWeight: 500 }}
               >
                 {news.title_en}
               </Box>

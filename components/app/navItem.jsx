@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   width: "max-content",
   textAlign: "center",
   fontSize: "14px",
-  fontWeight: "600",
+  fontWeight: "500",
   lineHeight: "1.5",
   letterSpacing: "0.88px",
 

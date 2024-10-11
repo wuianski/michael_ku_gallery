@@ -56,7 +56,7 @@ export default function PastExhibitions({ useLang, exhibitions }) {
                     </Box>
 
                     <Box
-                      sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }}
+                      sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }}
                       pb={1}
                       pt={2}
                     >
@@ -66,7 +66,7 @@ export default function PastExhibitions({ useLang, exhibitions }) {
                         <ArtistsNameEN artists={e.artists} />
                       )}
                     </Box>
-                    <Box sx={{ fontSize: { xs: 18, sm: 18, fontWeight: 600 } }}>
+                    <Box sx={{ fontSize: { xs: 18, sm: 18, fontWeight: 500 } }}>
                       {useLang ? (
                         <Box className="tw_font">{e.title_tw}</Box>
                       ) : (

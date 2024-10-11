@@ -53,7 +53,7 @@ export default function ArtistsListBlk({ useLang, artists }) {
                               sx={{
                                 cursor: "pointer",
                                 fontSize: 16,
-                                fontWeight: 600,
+                                fontWeight: 500,
                               }}
                               onMouseOver={() => setHoverId(index)}
                               className="tw_font"
@@ -73,7 +73,7 @@ export default function ArtistsListBlk({ useLang, artists }) {
                             sx={{
                               cursor: "pointer",
                               fontSize: 16,
-                              fontWeight: 600,
+                              fontWeight: 500,
                             }}
                             onMouseOver={() => setHoverId(index)}
                             className="en_font"

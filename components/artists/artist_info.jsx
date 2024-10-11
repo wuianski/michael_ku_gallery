@@ -18,7 +18,7 @@ export default function ArtistInfo({ useLang, artist }) {
           {useLang ? (
             <>
               <Box
-                sx={{ fontSize: { xs: 14, sm: 24 }, fontWeight: 600 }}
+                sx={{ fontSize: { xs: 14, sm: 24 }, fontWeight: 500 }}
                 className="tw_font w-400"
               >
                 {artist.name_tw}
@@ -56,7 +56,7 @@ export default function ArtistInfo({ useLang, artist }) {
             <>
               <Box
                 className="en_font w-400"
-                sx={{ fontSize: { xs: 14, sm: 24 }, fontWeight: 600 }}
+                sx={{ fontSize: { xs: 14, sm: 24 }, fontWeight: 500 }}
               >
                 {artist.name_en}
               </Box>

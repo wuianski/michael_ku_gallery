@@ -23,14 +23,14 @@ export default function EContentBlock({ useLang, e, index }) {
     <Box key={index}>
       {/* 1st row */}
       <Box pl={{ xs: 0, md: 12 }} pt={2} pb={6}>
-        <Box sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 600 }} pb={1}>
+        <Box sx={{ fontSize: { xs: 14, sm: 14 }, fontWeight: 500 }} pb={1}>
           {useLang ? (
             <ArtistsNameTW artists={e.artists} />
           ) : (
             <ArtistsNameEN artists={e.artists} />
           )}
         </Box>
-        <Box sx={{ fontSize: 18, fontWeight: 600 }}>
+        <Box sx={{ fontSize: 18, fontWeight: 500 }}>
           {useLang ? (
             <Box className="tw_font">{e.title_tw}</Box>
           ) : (

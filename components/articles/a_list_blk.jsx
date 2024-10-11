@@ -44,7 +44,7 @@ export default function AListBlock({ useLang, articles }) {
                           <Box>
                             <ArtistsNameTW artists={a.artists} />
                             {a.artists.length === 0 ? (
-                              <Box className="tw_font" sx={{ fontWeight: 600 }}>
+                              <Box className="tw_font" sx={{ fontWeight: 500 }}>
                                 谷公館
                               </Box>
                             ) : (
@@ -52,7 +52,7 @@ export default function AListBlock({ useLang, articles }) {
                             )}
                           </Box>
                           <Box
-                            sx={{ fontWeight: 600 }}
+                            sx={{ fontWeight: 500 }}
                             pb={1}
                             className="tw_font"
                           >
@@ -68,7 +68,7 @@ export default function AListBlock({ useLang, articles }) {
                           <Box>
                             <ArtistsNameEN artists={a.artists} />
                             {a.artists.length === 0 ? (
-                              <Box className="en_font" sx={{ fontWeight: 600 }}>
+                              <Box className="en_font" sx={{ fontWeight: 500 }}>
                                 Michael Ku Gallery
                               </Box>
                             ) : (
@@ -76,7 +76,7 @@ export default function AListBlock({ useLang, articles }) {
                             )}
                           </Box>
                           <Box
-                            sx={{ fontWeight: 600 }}
+                            sx={{ fontWeight: 500 }}
                             pb={1}
                             className="en_font"
                           >

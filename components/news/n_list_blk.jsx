@@ -49,7 +49,7 @@ export default function NListBlock({ useLang, news }) {
                           <Box
                             sx={{
                               fontSize: { xs: 14, sm: 14 },
-                              fontWeight: 600,
+                              fontWeight: 500,
                             }}
                             pb={1}
                           >
@@ -62,7 +62,7 @@ export default function NListBlock({ useLang, news }) {
                           </Box>
                           <Box
                             className="tw_font"
-                            sx={{ fontWeight: 600 }}
+                            sx={{ fontWeight: 500 }}
                             pb={1}
                           >
                             {n.title_tw}
@@ -80,7 +80,7 @@ export default function NListBlock({ useLang, news }) {
                           <Box
                             sx={{
                               fontSize: { xs: 14, sm: 14 },
-                              fontWeight: 600,
+                              fontWeight: 500,
                             }}
                             pb={1}
                           >
@@ -93,7 +93,7 @@ export default function NListBlock({ useLang, news }) {
                           </Box>
                           <Box
                             className="en_font"
-                            sx={{ fontWeight: 600 }}
+                            sx={{ fontWeight: 500 }}
                             pb={1}
                           >
                             {n.title_en}
