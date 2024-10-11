@@ -8,6 +8,7 @@ import Link from "next/link";
 /* Component */
 const Nav = dynamic(() => import("@/components/app/nav"), { ssr: false });
 import Footer from "@/components/app/footer";
+import Layout from "@/components/app/layout";
 /* MUI */
 import { Box, Paper, Stack, styled, Divider } from "@mui/material";
 /* Framer Motion */
@@ -69,7 +70,9 @@ function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
-      <Nav useLang={useLang} />
+      <div id="my_nav">
+        <Nav useLang={useLang} />
+      </div>
       {/* Desktop - language switch */}
       <Box sx={{ display: { xs: "none", md: "block" }, cursor: "pointer" }}>
         <motion.div
@@ -296,7 +299,9 @@ function App({ Component, pageProps }) {
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
             className="content"
           >
-            <Component key={router.route} {...pageProps} useLang={useLang} />
+            <Layout>
+              <Component key={router.route} {...pageProps} useLang={useLang} />
+            </Layout>
           </motion.div>
         </AnimatePresence>
       </Box>
