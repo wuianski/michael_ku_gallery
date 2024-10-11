@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   width: "max-content",
   textAlign: "center",
   fontSize: "14px",
-  fontWeight: "400",
+  // fontWeight: "600",
   lineHeight: "1.5",
   letterSpacing: "0.88px",
 
@@ -25,68 +25,80 @@ export default function NavItem({ useLang }) {
     <>
       <Item>
         <Link href="/artists">
-          <motion.div whileHover={{ scale: 1.1 }}>
-            {useLang ? (
-              <Box className="tw_font w-600">藝術家</Box>
-            ) : (
-              <Box className="en_font w-600">ARTISTS</Box>
-            )}
-          </motion.div>
+          {useLang ? (
+            <Box className="tw_font">
+              <motion.div whileHover={{ scale: 1.1 }}>藝術家</motion.div>
+            </Box>
+          ) : (
+            <Box className="en_font">
+              <motion.div whileHover={{ scale: 1.1 }}>ARTISTS</motion.div>
+            </Box>
+          )}
         </Link>
       </Item>
       <Item>
         <Link href="/exhibitions">
-          <motion.div whileHover={{ scale: 1.1 }}>
-            {useLang ? (
-              <Box className="tw_font w-600">展覽</Box>
-            ) : (
-              <Box className="en_font w-600">EXHIBITIONS</Box>
-            )}
-          </motion.div>
+          {useLang ? (
+            <Box className="tw_font">
+              <motion.div whileHover={{ scale: 1.1 }}>展覽</motion.div>
+            </Box>
+          ) : (
+            <Box className="en_font">
+              <motion.div whileHover={{ scale: 1.1 }}>EXHIBITIONS</motion.div>
+            </Box>
+          )}
         </Link>
       </Item>
       <Item>
         <Link href="/publications">
-          <motion.div whileHover={{ scale: 1.1 }}>
-            {useLang ? (
-              <Box className="tw_font w-600">出版</Box>
-            ) : (
-              <Box className="en_font w-600">PUBLICATIONS</Box>
-            )}
-          </motion.div>
+          {useLang ? (
+            <Box className="tw_font">
+              <motion.div whileHover={{ scale: 1.1 }}>出版</motion.div>
+            </Box>
+          ) : (
+            <Box className="en_font">
+              <motion.div whileHover={{ scale: 1.1 }}>PUBLICATIONS</motion.div>
+            </Box>
+          )}
         </Link>
       </Item>
       <Item>
         <Link href="/news">
-          <motion.div whileHover={{ scale: 1.1 }}>
-            {useLang ? (
-              <Box className="tw_font w-600">新聞</Box>
-            ) : (
-              <Box className="en_font w-600">NEWS</Box>
-            )}
-          </motion.div>
+          {useLang ? (
+            <Box className="tw_font">
+              <motion.div whileHover={{ scale: 1.1 }}>新聞</motion.div>
+            </Box>
+          ) : (
+            <Box className="en_font">
+              <motion.div whileHover={{ scale: 1.1 }}>NEWS</motion.div>
+            </Box>
+          )}
         </Link>
       </Item>
       <Item>
         <Link href="/articles">
-          <motion.div whileHover={{ scale: 1.1 }}>
-            {useLang ? (
-              <Box className="tw_font w-600">文章</Box>
-            ) : (
-              <Box className="en_font w-600">ARTICLES</Box>
-            )}
-          </motion.div>
+          {useLang ? (
+            <Box className="tw_font">
+              <motion.div whileHover={{ scale: 1.1 }}>文章</motion.div>
+            </Box>
+          ) : (
+            <Box className="en_font">
+              <motion.div whileHover={{ scale: 1.1 }}>ARTICLES</motion.div>
+            </Box>
+          )}
         </Link>
       </Item>
       <Item>
         <Link href="/about">
-          <motion.div whileHover={{ scale: 1.1 }}>
-            {useLang ? (
-              <Box className="tw_font w-600">關於</Box>
-            ) : (
-              <Box className="en_font w-600">ABOUT</Box>
-            )}
-          </motion.div>
+          {useLang ? (
+            <Box className="tw_font">
+              <motion.div whileHover={{ scale: 1.1 }}>關於</motion.div>
+            </Box>
+          ) : (
+            <Box className="en_font">
+              <motion.div whileHover={{ scale: 1.1 }}>ABOUT</motion.div>
+            </Box>
+          )}
         </Link>
       </Item>
     </>
