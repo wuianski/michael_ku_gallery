@@ -42,7 +42,7 @@ export default function PhotoGalleryTW({ photos }) {
     width: photo.artworks_id.image.width,
     height: photo.artworks_id.image.height,
     title_tw: `${photo.artworks_id.title_tw}`,
-    description: `${photo.artworks_id.caption_tw}`,
+    description: `${photo.artworks_id.caption_tw.replace(/<[^>]+>/g, "")}`,
     index: index,
     srcSet: breakpoints.map((breakpoint) => {
       const height = Math.round(

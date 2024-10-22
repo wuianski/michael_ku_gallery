@@ -41,7 +41,7 @@ export default function PhotoGalleryEN({ photos }) {
     width: photo.artworks_id.image.width,
     height: photo.artworks_id.image.height,
     title_en: `${photo.artworks_id.title_en}`,
-    description: `${photo.artworks_id.caption_en}`,
+    description: `${photo.artworks_id.caption_en.replace(/<[^>]+>/g, "")}`,
     index: index,
     srcSet: breakpoints.map((breakpoint) => {
       const height = Math.round(

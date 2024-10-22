@@ -120,6 +120,12 @@ import fetchData from "@/lib/api";
 // ];
 
 export default function Articles({ useLang, articles }) {
+  /* CHANGE ARRAY SORTING BY begin_exhibition */
+  !articles.articles
+    ? null
+    : articles.articles.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
   return (
     <>
       <Container maxWidth="lg">
@@ -151,7 +157,7 @@ export async function getStaticProps() {
   const articles = await fetchData(
     `
       query  {
-          articles (sort:["sort","-date"], filter:{status:{_eq:"published"}} ){
+          articles (filter:{status:{_eq:"published"}} ){
             id,
             title_tw,
             title_en,

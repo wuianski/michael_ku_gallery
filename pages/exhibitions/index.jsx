@@ -10,79 +10,20 @@ import CurrentExhibitions from "@/components/exhibitions/current_exhibitions";
 /* Fetch Data */
 import fetchData from "@/lib/api";
 
-/* fake data */
-// const exhibitions = [
-//   {
-//     name_tw: "羅智信",
-//     name_en: "Luo Jr-shin",
-//     title_tw: "看我舞動",
-//     title_en: "Dance with Me",
-//     img: "/img/fake_data/luo.jpg",
-//     begin_exhibition: "2021-10-01",
-//     end_exhibition: "2021-12-12",
-//   },
-//   {
-//     name_tw: "韋嘉",
-//     name_en: "Wei Jia",
-//     title_tw: "韋嘉 2017-2021",
-//     title_en: "Wei Jia 2017-2021",
-//     img: "/img/fake_data/5-韋嘉-《河灣》-2019-丙烯畫布-275x200cm-1.jpg",
-//     begin_exhibition: "2021-10-01",
-//     end_exhibition: "2021-12-12",
-//   },
-//   {
-//     name_tw: "劉安民",
-//     name_en: "Lao Lianben",
-//     title_tw: "光華",
-//     title_en: "Glorious",
-//     img: "/img/fake_data/2-劉安民-《池塘松尾芭蕉》-2019-壓克力石墨-152.4x182.9cm.jpg",
-//     begin_exhibition: "2021-10-01",
-//     end_exhibition: "2021-12-12",
-//   },
-//   {
-//     name_tw: "蔣勳",
-//     name_en: "Chiang Hsun",
-//     title_tw: "天地有大美",
-//     title_en: "The Beauty of Heaven and Earth",
-//     img: "/img/fake_data/7-蔣勳《雙松》-2019-水墨設色紙本-37.8x33.5cm.jpg",
-//     begin_exhibition: "2021-10-01",
-//     end_exhibition: "2021-12-12",
-//   },
-//   {
-//     name_tw: "韋嘉",
-//     name_en: "Wei Jia",
-//     title_tw: "韋嘉 2017-2021",
-//     title_en: "Wei Jia 2017-2021",
-//     img: "/img/fake_data/5-韋嘉-《河灣》-2019-丙烯畫布-275x200cm-1.jpg",
-//     begin_exhibition: "2021-10-01",
-//     end_exhibition: "2021-12-12",
-//   },
-//   {
-//     name_tw: "劉安民",
-//     name_en: "Lao Lianben",
-//     title_tw: "光華",
-//     title_en: "Glorious",
-//     img: "/img/fake_data/2-劉安民-《池塘松尾芭蕉》-2019-壓克力石墨-152.4x182.9cm.jpg",
-//     begin_exhibition: "2021-10-01",
-//     end_exhibition: "2021-12-12",
-//   },
-//   {
-//     name_tw: "蔣勳",
-//     name_en: "Chiang Hsun",
-//     title_tw: "天地有大美",
-//     title_en: "The Beauty of Heaven and Earth",
-//     img: "/img/fake_data/7-蔣勳《雙松》-2019-水墨設色紙本-37.8x33.5cm.jpg",
-//     begin_exhibition: "2021-10-01",
-//     end_exhibition: "2021-12-12",
-//   },
-// ];
-
 export default function Exhibitions({
   useLang,
   current_exhibitions,
   past_exhibitions,
 }) {
   // console.log(current_exhibitions);
+  /* CHANGE ARRAY SORTING BY begin_exhibition */
+  !past_exhibitions.exhibitions
+    ? null
+    : past_exhibitions.exhibitions.sort(
+        (a, b) =>
+          new Date(b.begin_exhibition).getTime() -
+          new Date(a.begin_exhibition).getTime()
+      );
   return (
     <>
       <Container maxWidth="lg">
@@ -173,7 +114,7 @@ export async function getStaticProps() {
     await fetchData(
       `
       query {
-        exhibitions (filter: { isCurrent: { _eq: false}, status:{_eq:"published"} }, sort:["sort","-end_exhibition"] ){
+        exhibitions (filter: { isCurrent: { _eq: false}, status:{_eq:"published"} } ){
           id
           title_tw,
           title_en,

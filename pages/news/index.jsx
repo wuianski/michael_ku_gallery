@@ -85,6 +85,15 @@ import fetchData from "@/lib/api";
 
 export default function News({ useLang, news }) {
   // console.log(news);
+  /* CHANGE ARRAY SORTING BY begin_exhibition */
+  !news.news
+    ? null
+    : news.news.sort(
+        (a, b) =>
+          new Date(b.begin_exhibition).getTime() -
+          new Date(a.begin_exhibition).getTime()
+      );
+
   return (
     <>
       <Container maxWidth="lg">
@@ -116,7 +125,7 @@ export async function getStaticProps() {
   const news = await fetchData(
     `
       query  {
-          news (sort:["sort","-end_exhibition"], filter:{status:{_eq:"published"}} ) {
+          news (filter:{status:{_eq:"published"}} ) {
             id,
             title_tw,
             title_en,
