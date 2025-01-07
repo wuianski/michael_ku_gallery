@@ -83,8 +83,9 @@ export async function getServerSideProps({ params }) {
               filename_disk
             },
             website,
-            artworks (limit:-1){
-              artworks_id {
+            artworks (limit:250, sort:["sort"] ){ 
+              sort,
+              artworks_id {             
                 title_tw,
                 title_en,
                 caption_tw,
