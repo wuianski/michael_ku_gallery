@@ -65,7 +65,7 @@ export async function getServerSideProps({ params }) {
   const artists = await fetchData(
     `
       query  {
-          artists  (filter: { id: { _eq: "${params.id}"}, status:{_eq:"published"} }){
+          artists  ( filter: { id: { _eq: "${params.id}"}, status:{_eq:"published"} }){
             id
             name_tw,
             name_en,
@@ -83,7 +83,7 @@ export async function getServerSideProps({ params }) {
               filename_disk
             },
             website,
-            artworks {
+            artworks (limit:-1){
               artworks_id {
                 title_tw,
                 title_en,
