@@ -65,10 +65,8 @@ function App({ Component, pageProps }) {
 
   /*** SEO data ***/
   const title = "谷公館 Michael Ku Gallery";
-  const description_tw =
-    "谷公館 Michael Ku Gallery，坐落在臺北市中心，成立於2008年，是臺灣有著美術史背景訓練的畫廊業者，每檔展覽谷浩宇先生皆親自策展並撰寫展覽文字，以大華人區為主軸，連通國際網路，一系列有規劃地介紹今日優秀藝術家，成為一個清晰的脈絡體系。並以文化推廣的角度，為畫廊創造一種具備獨立精神與人文深度的視野，探討在作品表面的背後的另一層次意境。";
-  const description_en =
-    "Founded by Michael Ku in 2008, Michael Ku Gallery is located in the central Taipei. Michael Ku leads the gallery with his background in art history. For each single exhibition he curates and writes the statement by himself. The major line of the gallery represented artists is from Greater China connecting with international art scene. We introduce the artists on the basis of plans, hope to form a clear context for the arts. In the meantime, we want to create a vision filled with independent spirits and depth of humanities from a perspective of promoting different cultures, in order to rediscover another layer of meanings of the artworks.";
+  const description_tw = `谷公館 Michael Ku Gallery，坐落在臺北市中心，成立於2008年，是臺灣有著美術史背景訓練的畫廊業者，每檔展覽谷浩宇先生皆親自策展並撰寫展覽文字，以大華人區為主軸，連通國際網路，一系列有規劃地介紹今日優秀藝術家，成為一個清晰的脈絡體系。並以文化推廣的角度，為畫廊創造一種具備獨立精神與人文深度的視野，探討在作品表面的背後的另一層次意境。`;
+  const description_en = `Founded by Michael Ku in 2008, Michael Ku Gallery is located in the central Taipei. Michael Ku leads the gallery with his background in art history. For each single exhibition he curates and writes the statement by himself. The major line of the gallery represented artists is from Greater China connecting with international art scene. We introduce the artists on the basis of plans, hope to form a clear context for the arts. In the meantime, we want to create a vision filled with independent spirits and depth of humanities from a perspective of promoting different cultures, in order to rediscover another layer of meanings of the artworks.`;
   const description = useLang ? description_tw : description_en;
   const img = "bf2b9750-0930-48db-aba8-3a35b610b54c.png";
 
@@ -76,7 +74,7 @@ function App({ Component, pageProps }) {
     <>
       <NextSeo
         title={title}
-        description={description}
+        // description={description}
         openGraph={{
           type: "website",
           url: "https://michaelkugallery.com/",
