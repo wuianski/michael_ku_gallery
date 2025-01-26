@@ -17,12 +17,12 @@ export default function Index({ useLang, current_exhibitions }) {
   return (
     <>
       <NextSeo
-        title={title}
+        title="谷公館 Michael Ku Gallery"
         // description={description}
         openGraph={{
           type: "website",
           url: "https://michaelkugallery.com/",
-          title: `${title}`,
+          title: "谷公館 Michael Ku Gallery",
           // description: `${description}`,
           images: [
             {

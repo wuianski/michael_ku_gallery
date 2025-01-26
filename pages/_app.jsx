@@ -73,12 +73,12 @@ function App({ Component, pageProps }) {
   return (
     <>
       <DefaultSeo
-        title={title}
+        title="谷公館 Michael Ku Gallery"
         // description={description}
         openGraph={{
           type: "website",
           url: "https://michaelkugallery.com/",
-          title: `${title}`,
+          title: "谷公館 Michael Ku Gallery",
           // description: `${description}`,
           images: [
             {
