@@ -27,7 +27,7 @@ export default function Artist({ useLang, artists }) {
           type: "website",
           url: `https://michaelkugallery.com/artists/${id}`,
           title: `${title}`,
-          description: `${bio}`,
+          // description: `${bio}`,
           images: [
             {
               url: `${process.env.DIRECTUS_URL}/assets/${img}`,

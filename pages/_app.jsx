@@ -81,7 +81,7 @@ function App({ Component, pageProps }) {
           type: "website",
           url: "https://michaelkugallery.com/",
           title: `${title}`,
-          description: `${description}`,
+          // description: `${description}`,
           images: [
             {
               url: `${process.env.DIRECTUS_URL}/assets/${img}`,
