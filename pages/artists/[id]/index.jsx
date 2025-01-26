@@ -18,9 +18,29 @@ export default function Artist({ useLang, artists }) {
   const img = artists[0].cover.image.filename_disk;
   const id = artists[0].id;
 
+  const SEO = {
+    title: `${artists[0].name_tw} | ${artists[0].name_en}`,
+    // description: 'SEO made easy for Next.js projects',
+    openGraph: {
+      type: "website",
+      url: `https://michaelkugallery.com/artists/${id}`,
+      title: "谷公館 Michael Ku Gallery",
+      // description: 'SEO made easy for Next.js projects',
+      images: [
+        {
+          url: `${process.env.DIRECTUS_URL}/assets/${img}`,
+          width: 800,
+          height: 600,
+          alt: "Picture of the artwork",
+        },
+      ],
+      site_name: "michaelkugallery.com",
+    },
+  };
+
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         title={title}
         // description={bio}
         openGraph={{
@@ -37,7 +57,8 @@ export default function Artist({ useLang, artists }) {
             },
           ],
         }}
-      />
+      /> */}
+      <NextSeo {...SEO} />
       <Container maxWidth="lg">
         {/* <motion.div
           initial={{ opacity: 0 }}

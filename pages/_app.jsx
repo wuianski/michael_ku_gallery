@@ -71,12 +71,12 @@ function App({ Component, pageProps }) {
   // const img = "bf2b9750-0930-48db-aba8-3a35b610b54c.png";
 
   const DEFAULT_SEO = {
-    title: "谷公館 Michael Ku Gallery",
+    title: "谷公館 | Michael Ku Gallery",
     // description: 'SEO made easy for Next.js projects',
     openGraph: {
       type: "website",
       url: "https://michaelkugallery.com",
-      title: "谷公館 Michael Ku Gallery",
+      title: "谷公館 | Michael Ku Gallery",
       // description: 'SEO made easy for Next.js projects',
       images: [
         {
@@ -110,7 +110,7 @@ function App({ Component, pageProps }) {
           ],
         }}
       /> */}
-      <DefaultSeo config={DEFAULT_SEO} />
+      <DefaultSeo {...DEFAULT_SEO} />
       <Head>
         <meta
           name="viewport"

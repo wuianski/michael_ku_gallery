@@ -26,9 +26,29 @@ export default function Exhibition({ useLang, exhibitions }) {
   //  const bio = useLang ? exhibitions[0].bio_tw : artists[0].bio_en;
   const img = exhibitions[0].cover.image.filename_disk;
   const id = exhibitions[0].id;
+
+  const SEO = {
+    title: `${exhibitions[0].title_tw} | ${exhibitions[0].title_en}`,
+    // description: 'SEO made easy for Next.js projects',
+    openGraph: {
+      type: "website",
+      url: `https://michaelkugallery.com/exhibitions/${id}`,
+      title: "谷公館 Michael Ku Gallery",
+      // description: 'SEO made easy for Next.js projects',
+      images: [
+        {
+          url: `${process.env.DIRECTUS_URL}/assets/${img}`,
+          width: 800,
+          height: 600,
+          alt: "Picture of the artwork",
+        },
+      ],
+      site_name: "michaelkugallery.com",
+    },
+  };
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         title={title}
         // description={bio}
         openGraph={{
@@ -45,7 +65,8 @@ export default function Exhibition({ useLang, exhibitions }) {
             },
           ],
         }}
-      />
+      /> */}
+      <NextSeo {...SEO} />
       <Container maxWidth="lg">
         {/* <motion.div
           initial={{ opacity: 0 }}

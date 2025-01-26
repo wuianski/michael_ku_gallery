@@ -14,9 +14,29 @@ export default function Index({ useLang, current_exhibitions }) {
   /*** SEO data ***/
   const title = "谷公館 Michael Ku Gallery";
   const img = "bf2b9750-0930-48db-aba8-3a35b610b54c.png";
+
+  const SEO = {
+    title: "谷公館 | Michael Ku Gallery",
+    // description: 'SEO made easy for Next.js projects',
+    openGraph: {
+      type: "website",
+      url: "https://michaelkugallery.com",
+      title: "谷公館 | Michael Ku Gallery",
+      // description: 'SEO made easy for Next.js projects',
+      images: [
+        {
+          url: `${process.env.DIRECTUS_URL}/assets/bf2b9750-0930-48db-aba8-3a35b610b54c.png`,
+          width: 800,
+          height: 600,
+          alt: "Picture of the artwork",
+        },
+      ],
+      site_name: "michaelkugallery.com",
+    },
+  };
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         title="谷公館 Michael Ku Gallery"
         // description={description}
         openGraph={{
@@ -33,7 +53,8 @@ export default function Index({ useLang, current_exhibitions }) {
             },
           ],
         }}
-      />
+      /> */}
+      <NextSeo {...SEO} />
       {/* 當期展覽 */}
       <Box p={{ xs: 4, md: 0 }} sx={{ minHeight: { xs: "50vh", md: "60vh" } }}>
         {current_exhibitions.exhibitions.length > 0 ? (
