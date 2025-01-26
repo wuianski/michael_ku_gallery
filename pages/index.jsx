@@ -7,9 +7,6 @@ import fetchData from "@/lib/api";
 /* Component */
 import CurrentExhibitionFront from "@/components/exhibitions/current_exhibition_front";
 
-const data_tw = "中文資料";
-const data_en = "English data";
-
 export default function Index({ useLang, current_exhibitions }) {
   // console.log(current_exhibitions.exhibitions.length);
   return (

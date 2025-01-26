@@ -8,11 +8,35 @@ import Artworks from "@/components/artists/artworks";
 import Exhibitions from "@/components/artists/exhibitions";
 /* Fetch Data */
 import fetchData from "@/lib/api";
+/* SEO */
+import { NextSeo } from "next-seo";
 
 export default function Artist({ useLang, artists }) {
-  // console.log(artists);
+  /*** SEO data ***/
+  const title = useLang ? artists[0].name_tw : artists[0].name_en;
+  const bio = useLang ? artists[0].bio_tw : artists[0].bio_en;
+  const img = artists[0].cover.image.filename_disk;
+
   return (
     <>
+      <NextSeo
+        title={title}
+        description={bio}
+        openGraph={{
+          type: "website",
+          url: "https://michaelkugallery.com/",
+          title: { title },
+          description: { bio },
+          images: [
+            {
+              url: `${process.env.DIRECTUS_URL}/assets/${img}`,
+              width: 800,
+              height: 600,
+              alt: "Picture of the artwork",
+            },
+          ],
+        }}
+      />
       <Container maxWidth="lg">
         {/* <motion.div
           initial={{ opacity: 0 }}
