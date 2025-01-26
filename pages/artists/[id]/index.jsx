@@ -22,7 +22,7 @@ export default function Artist({ useLang, artists }) {
     <>
       <NextSeo
         title={title}
-        description={bio}
+        // description={bio}
         openGraph={{
           type: "website",
           url: `https://michaelkugallery.com/artists/${id}`,

@@ -6,11 +6,34 @@ import { Box } from "@mui/material";
 import fetchData from "@/lib/api";
 /* Component */
 import CurrentExhibitionFront from "@/components/exhibitions/current_exhibition_front";
+/* SEO */
+import { NextSeo } from "next-seo";
 
 export default function Index({ useLang, current_exhibitions }) {
   // console.log(current_exhibitions.exhibitions.length);
+  /*** SEO data ***/
+  const title = "谷公館 Michael Ku Gallery";
+  const img = "bf2b9750-0930-48db-aba8-3a35b610b54c.png";
   return (
     <>
+      <NextSeo
+        title={title}
+        // description={description}
+        openGraph={{
+          type: "website",
+          url: "https://michaelkugallery.com/",
+          title: `${title}`,
+          // description: `${description}`,
+          images: [
+            {
+              url: `${process.env.DIRECTUS_URL}/assets/${img}`,
+              width: 800,
+              height: 600,
+              alt: "Picture of the artwork",
+            },
+          ],
+        }}
+      />
       {/* 當期展覽 */}
       <Box p={{ xs: 4, md: 0 }} sx={{ minHeight: { xs: "50vh", md: "60vh" } }}>
         {current_exhibitions.exhibitions.length > 0 ? (
