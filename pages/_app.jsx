@@ -22,7 +22,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 /* SEO */
-import { NextSeo } from "next-seo";
+import { NextSeo, DefaultSeo } from "next-seo";
 
 /* Mobile Nav Item */
 const Nav_item_m = styled(Paper)(({ theme }) => ({
@@ -72,7 +72,7 @@ function App({ Component, pageProps }) {
 
   return (
     <>
-      <NextSeo
+      <DefaultSeo
         title={title}
         // description={description}
         openGraph={{
