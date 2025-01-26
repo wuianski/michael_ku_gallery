@@ -16,6 +16,7 @@ export default function Artist({ useLang, artists }) {
   const title = useLang ? artists[0].name_tw : artists[0].name_en;
   const bio = useLang ? artists[0].bio_tw : artists[0].bio_en;
   const img = artists[0].cover.image.filename_disk;
+  const id = artists[0].id;
 
   return (
     <>
@@ -24,7 +25,7 @@ export default function Artist({ useLang, artists }) {
         description={bio}
         openGraph={{
           type: "website",
-          url: "https://michaelkugallery.com/",
+          url: `https://michaelkugallery.com/artists/${id}`,
           title: `${title}`,
           description: `${bio}`,
           images: [
