@@ -25,8 +25,8 @@ export default function Artist({ useLang, artists }) {
         openGraph={{
           type: "website",
           url: "https://michaelkugallery.com/",
-          title: { title },
-          description: { bio },
+          title: `${title}`,
+          description: `${bio}`,
           images: [
             {
               url: `${process.env.DIRECTUS_URL}/assets/${img}`,

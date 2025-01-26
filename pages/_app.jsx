@@ -80,8 +80,8 @@ function App({ Component, pageProps }) {
         openGraph={{
           type: "website",
           url: "https://michaelkugallery.com/",
-          title: { title },
-          description: { description },
+          title: `${title}`,
+          description: `${description}`,
           images: [
             {
               url: `${process.env.DIRECTUS_URL}/assets/${img}`,
