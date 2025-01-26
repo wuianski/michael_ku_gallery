@@ -33,7 +33,7 @@ export default function Exhibition({ useLang, exhibitions }) {
     openGraph: {
       type: "website",
       url: `https://michaelkugallery.com/exhibitions/${id}`,
-      title: "谷公館 Michael Ku Gallery",
+      title: `${exhibitions[0].title_tw} | ${exhibitions[0].title_en}`,
       // description: 'SEO made easy for Next.js projects',
       images: [
         {

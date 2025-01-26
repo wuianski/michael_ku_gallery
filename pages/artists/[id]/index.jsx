@@ -24,7 +24,7 @@ export default function Artist({ useLang, artists }) {
     openGraph: {
       type: "website",
       url: `https://michaelkugallery.com/artists/${id}`,
-      title: "谷公館 Michael Ku Gallery",
+      title: `${artists[0].name_tw} | ${artists[0].name_en}`,
       // description: 'SEO made easy for Next.js projects',
       images: [
         {
