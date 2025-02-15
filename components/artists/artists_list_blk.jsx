@@ -44,7 +44,7 @@ export default function ArtistsListBlk({ useLang, artists }) {
               {artists.map((a, index) => (
                 <Grid item xs={12} md={6} key={index}>
                   <Item>
-                    <Link href={`/artists/${a.id}`}>
+                    <Link href={`/artists/${a.name_tw}`}>
                       <Box p={{ xs: 1.4, sm: 2 }}>
                         {useLang ? (
                           <>

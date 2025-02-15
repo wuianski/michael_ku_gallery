@@ -29,12 +29,12 @@ export default function Exhibition({ useLang, exhibitions }) {
 
   const SEO = {
     title: `${exhibitions[0].title_tw} | ${exhibitions[0].title_en}`,
-    // description: 'SEO made easy for Next.js projects',
+    canonical: `https://michaelkugallery.com/exhibitions/${id}`,
+    description: `${exhibitions[0].title_tw} | ${exhibitions[0].title_en}`,
     openGraph: {
       type: "website",
       url: `https://michaelkugallery.com/exhibitions/${id}`,
       title: `${exhibitions[0].title_tw} | ${exhibitions[0].title_en}`,
-      // description: 'SEO made easy for Next.js projects',
       images: [
         {
           url: `${process.env.DIRECTUS_URL}/assets/${img}`,

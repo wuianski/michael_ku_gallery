@@ -12,20 +12,22 @@ import fetchData from "@/lib/api";
 import { NextSeo } from "next-seo";
 
 export default function Artist({ useLang, artists }) {
+  // console.log(artists);
   /*** SEO data ***/
   const title = useLang ? artists[0].name_tw : artists[0].name_en;
   const bio = useLang ? artists[0].bio_tw : artists[0].bio_en;
   const img = artists[0].cover.image.filename_disk;
   const id = artists[0].id;
+  const name_tw = artists[0].name_tw;
 
   const SEO = {
     title: `${artists[0].name_tw} | ${artists[0].name_en}`,
-    // description: 'SEO made easy for Next.js projects',
+    canonical: `https://michaelkugallery.com/artists/${name_tw}`,
+    description: `${artists[0].name_tw} | ${artists[0].name_en}`,
     openGraph: {
       type: "website",
-      url: `https://michaelkugallery.com/artists/${id}`,
+      url: `https://michaelkugallery.com/artists/${name_tw}`,
       title: `${artists[0].name_tw} | ${artists[0].name_en}`,
-      // description: 'SEO made easy for Next.js projects',
       images: [
         {
           url: `${process.env.DIRECTUS_URL}/assets/${img}`,
@@ -40,31 +42,8 @@ export default function Artist({ useLang, artists }) {
 
   return (
     <>
-      {/* <NextSeo
-        title={title}
-        // description={bio}
-        openGraph={{
-          type: "website",
-          url: `https://michaelkugallery.com/artists/${id}`,
-          title: `${title}`,
-          // description: `${bio}`,
-          images: [
-            {
-              url: `${process.env.DIRECTUS_URL}/assets/${img}`,
-              width: 800,
-              height: 600,
-              alt: "Picture of the artwork",
-            },
-          ],
-        }}
-      /> */}
       <NextSeo {...SEO} />
       <Container maxWidth="lg">
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.5 } }}
-          exit={{ opacity: 0, transition: { duration: 0.5 } }}
-        > */}
         <Box
           p={2}
           // className="tw_font"
@@ -111,7 +90,7 @@ export async function getServerSideProps({ params }) {
   const artists = await fetchData(
     `
       query  {
-          artists  ( filter: { id: { _eq: "${params.id}"}, status:{_eq:"published"} }){
+          artists  ( filter: { name_tw: { _eq: "${params.name_tw}"}, status:{_eq:"published"} }){
             id
             name_tw,
             name_en,
