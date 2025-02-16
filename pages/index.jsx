@@ -10,19 +10,18 @@ import CurrentExhibitionFront from "@/components/exhibitions/current_exhibition_
 import { NextSeo } from "next-seo";
 
 export default function Index({ useLang, current_exhibitions }) {
-  // console.log(current_exhibitions.exhibitions.length);
+  // console.log(current_exhibitions.exhibitions[0].id);
   /*** SEO data ***/
-  const title = "谷公館 Michael Ku Gallery";
-  const img = "bf2b9750-0930-48db-aba8-3a35b610b54c.png";
 
   const SEO = {
     title: "谷公館 | Michael Ku Gallery",
-    // description: 'SEO made easy for Next.js projects',
+    canonical: `https://michaelkugallery.com`,
+    description: `當期展覽 : ${current_exhibitions.exhibitions[0].title_tw} | Current Exhibition : ${current_exhibitions.exhibitions[0].title_en}`,
     openGraph: {
       type: "website",
       url: "https://michaelkugallery.com",
       title: "谷公館 | Michael Ku Gallery",
-      // description: 'SEO made easy for Next.js projects',
+      description: `當期展覽 : ${current_exhibitions.exhibitions[0].title_tw} | Current Exhibition : ${current_exhibitions.exhibitions[0].title_en}`,
       images: [
         {
           url: `${process.env.DIRECTUS_URL}/assets/bf2b9750-0930-48db-aba8-3a35b610b54c.png`,
@@ -36,24 +35,6 @@ export default function Index({ useLang, current_exhibitions }) {
   };
   return (
     <>
-      {/* <NextSeo
-        title="谷公館 Michael Ku Gallery"
-        // description={description}
-        openGraph={{
-          type: "website",
-          url: "https://michaelkugallery.com/",
-          title: "谷公館 Michael Ku Gallery",
-          // description: `${description}`,
-          images: [
-            {
-              url: `${process.env.DIRECTUS_URL}/assets/${img}`,
-              width: 800,
-              height: 600,
-              alt: "Picture of the artwork",
-            },
-          ],
-        }}
-      /> */}
       <NextSeo {...SEO} />
       {/* 當期展覽 */}
       <Box p={{ xs: 4, md: 0 }} sx={{ minHeight: { xs: "50vh", md: "60vh" } }}>
