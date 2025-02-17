@@ -1,5 +1,20 @@
-User-agent: nameOfBot
-Disallow: /admin/
-
 User-agent: *
-Allow: /
+Allow: /artists/
+Allow: /exhibitions/
+Allow: /publications/
+Allow: /news/
+Allow: /about/
+Disallow: /en/
+Disallow: /wp-content/
+Disallow: /tag/
+Disallow: /history/
+Disallow: /category/
+Disallow: /feed/
+Disallow: /author/
+Disallow: /cgi-sys/
+Disallow: /藝術家/
+Disallow: /展覽/
+Disallow: /出版/
+Disallow: /關於/
+
+Sitemap: https://michaelkugallery.com/sitemap.xml
