@@ -24,6 +24,21 @@ import "slick-carousel/slick/slick-theme.css";
 /* SEO */
 import { NextSeo, DefaultSeo } from "next-seo";
 
+import { Noto_Serif_TC } from "next/font/google";
+const noto_serif_tc = Noto_Serif_TC({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-noto-serif-tc",
+});
+import { Baskervville } from "next/font/google";
+const baskervville = Baskervville({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-baskervville",
+});
+
 /* Mobile Nav Item */
 const Nav_item_m = styled(Paper)(({ theme }) => ({
   background: "none",
@@ -349,7 +364,15 @@ function App({ Component, pageProps }) {
             className="content"
           >
             <Layout>
-              <Component key={router.route} {...pageProps} useLang={useLang} />
+              <main
+                className={`${noto_serif_tc.variable} ${baskervville.variable}`}
+              >
+                <Component
+                  key={router.route}
+                  {...pageProps}
+                  useLang={useLang}
+                />
+              </main>
             </Layout>
           </motion.div>
         </AnimatePresence>

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import Link from "next/link";
 
 export default function ArtistsNameTW({ artists }) {
-  console.log(artists);
+  // console.log(artists);
   return (
     <>
       {artists.map((a, index) => (

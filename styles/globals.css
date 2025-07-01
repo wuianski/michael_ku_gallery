@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap');
-
+/* @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&display=swap"); */
 
 html,
 body {
@@ -28,35 +27,34 @@ a {
   color: #000 !important;
 } */
 
-
-.yarl__slide_captions_container{
-  background:none !important;
+.yarl__slide_captions_container {
+  background: none !important;
 }
-.yarl__slide_description{
-  color:#000 !important;
+.yarl__slide_description {
+  color: #000 !important;
   font-size: 12px !important;
 }
-.yarl__button{
+.yarl__button {
   color: #000 !important;
 }
-.yarl__icon{
+.yarl__icon {
   width: 38px !important;
   height: 38spx !important;
 }
 
 .tw_font {
-  font-family: "Noto Serif TC", serif;
-  /* color:#000; */
+  /* font-family: "Noto Serif TC", serif; */
+  font-family: var(--font-noto-serif-tc), serif;
 }
 .en_font {
-  font-family: "Baskervville", serif;
+  font-family: var(--font-baskervville), serif;
 }
-.w-400{
+.w-400 {
   font-weight: 400;
 }
-.w-500{
+.w-500 {
   font-weight: 500;
 }
-.w-600{
+.w-600 {
   font-weight: 600;
 }
