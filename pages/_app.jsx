@@ -134,11 +134,17 @@ function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/*** !!important when use router to query value from component. Use a React key to tell React to remount the component. ***/}
-      <div id="my_nav">
+      <div
+        id="my_nav"
+        className={`${noto_serif_tc.variable} ${baskervville.variable}`}
+      >
         <Nav useLang={useLang} />
       </div>
       {/* Desktop - language switch */}
-      <Box sx={{ display: { xs: "none", md: "block" }, cursor: "pointer" }}>
+      <Box
+        sx={{ display: { xs: "none", md: "block" }, cursor: "pointer" }}
+        className={`${noto_serif_tc.variable} ${baskervville.variable}`}
+      >
         <motion.div
           // variants={show_state}
           // animate={useLang ? "show" : "hide"}
@@ -203,7 +209,11 @@ function App({ Component, pageProps }) {
         </motion.div>
       </Box>
       {/* Mobile - nav + language switch */}
-      <Box sx={{ display: { xs: "block", md: "none" } }} pt={4}>
+      <Box
+        sx={{ display: { xs: "block", md: "none" } }}
+        className={`${noto_serif_tc.variable} ${baskervville.variable}`}
+        pt={4}
+      >
         {!nav_m && (
           <Box
             onClick={() => setNav_m(true)}
@@ -354,7 +364,10 @@ function App({ Component, pageProps }) {
 
       {/* Page */}
       {/* important to add key for make it work */}
-      <Box pt={2}>
+      <Box
+        pt={2}
+        className={`${noto_serif_tc.variable} ${baskervville.variable}`}
+      >
         <AnimatePresence>
           <motion.div
             key={router.route}
@@ -364,21 +377,13 @@ function App({ Component, pageProps }) {
             className="content"
           >
             <Layout>
-              <main
-                className={`${noto_serif_tc.variable} ${baskervville.variable}`}
-              >
-                <Component
-                  key={router.route}
-                  {...pageProps}
-                  useLang={useLang}
-                />
-              </main>
+              <Component key={router.route} {...pageProps} useLang={useLang} />
             </Layout>
           </motion.div>
         </AnimatePresence>
       </Box>
       {/* Footer */}
-      <Box className="en_font" pt={12} pb={6}>
+      <Box className={` ${baskervville.variable}`} pt={12} pb={6}>
         <Footer />
       </Box>
     </>

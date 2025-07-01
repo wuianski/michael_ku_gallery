@@ -89,6 +89,7 @@ export default function CurrentExhibitionFront({ useLang, exhibitions }) {
                         </Box>
                         <Box
                           sx={{ fontSize: { xs: 18, sm: 18 }, fontWeight: 500 }}
+                          pb={0.5}
                         >
                           {useLang ? (
                             <Box className="tw_font">{e.title_tw}</Box>

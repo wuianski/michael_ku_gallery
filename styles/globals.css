@@ -12,7 +12,7 @@ body {
   width: 100dvw;
   height: 100dvh;
   overflow-x: hidden;
-  font-family: var(--font-noto-serif-tc), var(--font-baskervville), serif;
+  /* font-family: var(--font-noto-serif-tc), var(--font-baskervville), serif; */
   font-optical-sizing: auto;
 }
 
@@ -45,6 +45,7 @@ a {
 .tw_font {
   /* font-family: "Noto Serif TC", serif; */
   font-family: var(--font-noto-serif-tc), serif;
+  letter-spacing: 0.1rem;
 }
 .en_font {
   font-family: var(--font-baskervville), serif;

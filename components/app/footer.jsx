@@ -19,6 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <>
       <Box
@@ -37,8 +38,9 @@ export default function Footer() {
                   letterSpacing: "1.5px",
                   fontFamily: "Roboto",
                 }}
+                // className="en_font"
               >
-                © 2024 MICHAEL KU GALLERY. All Rights Reserved
+                © {year} MICHAEL KU GALLERY. All Rights Reserved
               </Box>
             </Item>
           </Grid>
