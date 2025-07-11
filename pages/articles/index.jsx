@@ -173,6 +173,8 @@ export async function getStaticProps() {
                 name_en
               }
             },
+            writer_tw,
+            writer_en,
             date,
  
           }
