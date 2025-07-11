@@ -107,6 +107,18 @@ export default function AListBlock({ useLang, articles }) {
                               >
                                 {article.title_en}
                               </Box>
+
+                              <Box
+                                sx={{
+                                  fontSize: 12,
+                                  fontWeight: 400,
+                                }}
+                                pb={1}
+                                className="en_font"
+                              >
+                                撰文 / {article.writer_en}
+                              </Box>
+
                               <Box sx={{ fontSize: 12, color: "#666" }}>
                                 <Box>
                                   {new Date(article.date).toLocaleDateString()}
