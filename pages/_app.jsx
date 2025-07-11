@@ -303,7 +303,7 @@ function App({ Component, pageProps }) {
                   )}
                 </Link>
               </Nav_item_m>
-              {/* <Nav_item_m
+              <Nav_item_m
                 onClick={() => {
                   setNav_m(false);
                 }}
@@ -315,7 +315,7 @@ function App({ Component, pageProps }) {
                     <Box className="en_font">ARTICLES</Box>
                   )}
                 </Link>
-              </Nav_item_m> */}
+              </Nav_item_m>
               <Nav_item_m
                 onClick={() => {
                   setNav_m(false);

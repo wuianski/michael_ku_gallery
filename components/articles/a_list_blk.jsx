@@ -3,8 +3,8 @@ import Link from "next/link";
 /* Framer Motion */
 import { motion, useWillChange } from "framer-motion";
 /* Component */
-import ArtistsNameTW from "@/components/common/artistsNameTW";
-import ArtistsNameEN from "@/components/common/artistsNameEN";
+import ArtistsNameTW from "@/components/common/artistsNameTWNoLink";
+import ArtistsNameEN from "@/components/common/artistsNameENNoLink";
 
 const Item = styled(Paper)(({ theme }) => ({
   textAlign: "left",
@@ -26,10 +26,10 @@ export default function AListBlock({ useLang, articles }) {
           columns={{ xs: 12, md: 12 }}
           pl={{ xs: 0, md: 10 }}
         >
-          {articles.map((a, index) => (
+          {articles.map((article, index) => (
             <Grid item xs={12} md={6} key={index}>
               <Item>
-                <Link href={`/articles/${a.id}`}>
+                <Link href={`/articles/${article.id}`}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring" }}
@@ -42,8 +42,8 @@ export default function AListBlock({ useLang, articles }) {
                       {useLang ? (
                         <>
                           <Box>
-                            <ArtistsNameTW artists={a.artists} />
-                            {a.artists.length === 0 ? (
+                            <ArtistsNameTW artists={article.artists} />
+                            {article.artists.length === 0 ? (
                               <Box className="tw_font" sx={{ fontWeight: 500 }}>
                                 谷公館
                               </Box>
@@ -56,18 +56,20 @@ export default function AListBlock({ useLang, articles }) {
                             pb={1}
                             className="tw_font"
                           >
-                            {a.title_tw}
+                            {article.title_tw}
                           </Box>
                           <Box sx={{ fontSize: 12, color: "#666" }}>
-                            <Box>{new Date(a.date).toLocaleDateString()}</Box>
+                            <Box>
+                              {new Date(article.date).toLocaleDateString()}
+                            </Box>
                             <Box className="tw_font">詳情</Box>
                           </Box>
                         </>
                       ) : (
                         <>
                           <Box>
-                            <ArtistsNameEN artists={a.artists} />
-                            {a.artists.length === 0 ? (
+                            <ArtistsNameEN artists={article.artists} />
+                            {article.artists.length === 0 ? (
                               <Box className="en_font" sx={{ fontWeight: 500 }}>
                                 Michael Ku Gallery
                               </Box>
@@ -80,10 +82,12 @@ export default function AListBlock({ useLang, articles }) {
                             pb={1}
                             className="en_font"
                           >
-                            {a.title_en}
+                            {article.title_en}
                           </Box>
                           <Box sx={{ fontSize: 12, color: "#666" }}>
-                            <Box>{new Date(a.date).toLocaleDateString()}</Box>
+                            <Box>
+                              {new Date(article.date).toLocaleDateString()}
+                            </Box>
                             <Box className="en_font">More</Box>
                           </Box>
                         </>

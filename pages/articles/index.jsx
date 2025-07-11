@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Box, Paper, Stack, styled, Grid, Container } from "@mui/material";
 
 /* Framer Motion */
@@ -120,20 +121,23 @@ import fetchData from "@/lib/api";
 // ];
 
 export default function Articles({ useLang, articles }) {
+  /* For Next.js 13, return jsx once the component is mounted */
+  // const [mounted, setMounted] = useState(false);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
+  // if (!mounted) return <></>;
+
   /* CHANGE ARRAY SORTING BY begin_exhibition */
   !articles.articles
     ? null
     : articles.articles.sort(
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
       );
+
   return (
     <>
       <Container maxWidth="lg">
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.5 } }}
-          exit={{ opacity: 0, transition: { duration: 0.5 } }}
-        > */}
         <Box
           p={2}
           // className="tw_font"

@@ -124,7 +124,7 @@ export default function NavItem({ useLang }) {
           )}
         </Link>
       </Item>
-      {/* <Item>
+      <Item>
         <Link href="/articles">
           {useLang ? (
             <Box className="tw_font">
@@ -148,7 +148,7 @@ export default function NavItem({ useLang }) {
             </Box>
           )}
         </Link>
-      </Item> */}
+      </Item>
       <Item>
         <Link href="/about">
           {useLang ? (
