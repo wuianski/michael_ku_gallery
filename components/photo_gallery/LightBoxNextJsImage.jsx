@@ -49,7 +49,7 @@ export default function NextJsImage({ slide, offset, rect }) {
         quality={100}
         // loading="eager"
         draggable={false}
-        placeholder={slide.blurDataURL ? "blur" : undefined}
+        // placeholder={slide.blurDataURL ? "blur" : undefined}
         style={{
           objectFit: cover ? "cover" : "contain",
           cursor: click ? "pointer" : undefined,

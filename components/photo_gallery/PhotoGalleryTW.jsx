@@ -1,12 +1,4 @@
 import { useState } from "react";
-// react-photo-album
-import {
-  PhotoAlbum,
-  RenderContainer,
-  RenderPhoto,
-  RenderRowContainer,
-} from "react-photo-album";
-import NextJsImageTW from "@/components/photo_gallery/NextJsImageTW";
 // yet-another-react-lightbox
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -16,26 +8,9 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 
 import Image from "next/image";
+import { Box } from "@mui/material";
 
-const renderContainer = ({ containerProps, children, containerRef }) => (
-  <div ref={containerRef} {...containerProps}>
-    {children}
-  </div>
-);
-
-const renderRowContainer = ({
-  rowContainerProps,
-  rowIndex,
-  rowsCount,
-  children,
-}) => (
-  <div>
-    <div {...rowContainerProps}>{children}</div>
-    {rowIndex < rowsCount - 1 && <div style={{ marginBottom: "40px" }} />}
-  </div>
-);
-
-export default function PhotoGalleryTW({ photos }) {
+export default function PhotoGalleryTW({ photos, col }) {
   //   console.log(photos);
   const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
   const myphotos = photos.map((photo, index) => ({
@@ -67,17 +42,22 @@ export default function PhotoGalleryTW({ photos }) {
 
   const [index, setIndex] = useState(-1);
 
-  const gridStyle = {
-    minHeight: "100vh", // Example height for the grid
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", // Example grid layout
-    gap: "30px",
-    // padding: "20px",
-  };
-
+  const gridColumns =
+    col === 2
+      ? "repeat(2, 1fr)"
+      : col === 4
+      ? "repeat(4, 1fr)"
+      : "repeat(2, 1fr)";
   return (
     <>
-      <div style={gridStyle}>
+      <Box
+        sx={{
+          minHeight: "100vh",
+          display: "grid",
+          gridTemplateColumns: { xs: "repeat(2, 1fr)", md: gridColumns },
+          gap: "30px",
+        }}
+      >
         {myphotos.map((photo, idx) => (
           <div
             key={photo.src + idx}
@@ -106,14 +86,13 @@ export default function PhotoGalleryTW({ photos }) {
               placeholder="blur"
               blurDataURL={photo.srcSet[6].src}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              // loading="lazy"
             />
             <div style={{ padding: "8px 0", textAlign: "center" }}>
               <div style={{ fontWeight: "normal" }}>{photo.title_tw}</div>
             </div>
           </div>
         ))}
-      </div>
+      </Box>
       <Lightbox
         slides={myphotos}
         open={index >= 0}

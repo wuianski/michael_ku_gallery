@@ -14,10 +14,10 @@ import { NextSeo } from "next-seo";
 export default function Artist({ useLang, artists }) {
   // console.log(artists);
   /*** SEO data ***/
-  const title = useLang ? artists[0].name_tw : artists[0].name_en;
-  const bio = useLang ? artists[0].bio_tw : artists[0].bio_en;
+  // const title = useLang ? artists[0].name_tw : artists[0].name_en;
+  // const bio = useLang ? artists[0].bio_tw : artists[0].bio_en;
   const img = artists[0].cover.image.filename_disk;
-  const id = artists[0].id;
+  // const id = artists[0].id;
   const name_tw = artists[0].name_tw;
 
   const SEO = {
@@ -39,6 +39,8 @@ export default function Artist({ useLang, artists }) {
       site_name: "michaelkugallery.com",
     },
   };
+
+  const col = 4;
 
   return (
     <>
@@ -66,6 +68,7 @@ export default function Artist({ useLang, artists }) {
                 artworks={artist.artworks}
                 useLang={useLang}
                 key={index}
+                col={col}
               />
             ))}
           </Box>

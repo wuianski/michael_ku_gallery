@@ -1,12 +1,4 @@
 import { useState } from "react";
-// react-photo-album
-import {
-  PhotoAlbum,
-  RenderContainer,
-  RenderPhoto,
-  RenderRowContainer,
-} from "react-photo-album";
-import NextJsImageEN from "@/components/photo_gallery/NextJsImageEN";
 // yet-another-react-lightbox
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -16,24 +8,7 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 
 import Image from "next/image";
-
-const renderContainer = ({ containerProps, children, containerRef }) => (
-  <div ref={containerRef} {...containerProps}>
-    {children}
-  </div>
-);
-
-const renderRowContainer = ({
-  rowContainerProps,
-  rowIndex,
-  rowsCount,
-  children,
-}) => (
-  <div>
-    <div {...rowContainerProps}>{children}</div>
-    {rowIndex < rowsCount - 1 && <div style={{ marginBottom: "40px" }} />}
-  </div>
-);
+import { Box } from "@mui/material";
 
 export default function PhotoGalleryEN({ photos }) {
   //   console.log(photos);
@@ -65,17 +40,16 @@ export default function PhotoGalleryEN({ photos }) {
 
   const [index, setIndex] = useState(-1);
 
-  const gridStyle = {
-    minHeight: "100vh", // Example height for the grid
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", // Example grid layout
-    gap: "30px",
-    // padding: "20px",
-  };
-
   return (
     <>
-      <div style={gridStyle}>
+      <Box
+        sx={{
+          minHeight: "100vh",
+          display: "grid",
+          gridTemplateColumns: { xs: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }, // default to 2 columns (mobile)
+          gap: "30px",
+        }}
+      >
         {myphotos.map((photo, idx) => (
           <div
             key={photo.src + idx}
@@ -111,7 +85,7 @@ export default function PhotoGalleryEN({ photos }) {
             </div>
           </div>
         ))}
-      </div>
+      </Box>
 
       <Lightbox
         slides={myphotos}

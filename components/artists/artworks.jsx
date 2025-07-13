@@ -14,8 +14,9 @@ const Item = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {},
 }));
 
-export default function Artworks({ useLang, artworks }) {
+export default function Artworks({ useLang, artworks, col }) {
   // console.log(artworks);
+  // const col = 4;
   return (
     <>
       <Box pb={2} sx={{ color: "#666" }}>
@@ -29,9 +30,9 @@ export default function Artworks({ useLang, artworks }) {
 
       <Box sx={{ fontSize: 12 }}>
         {useLang ? (
-          <PhotoGalleryTW photos={artworks} />
+          <PhotoGalleryTW photos={artworks} col={col} />
         ) : (
-          <PhotoGalleryEN photos={artworks} />
+          <PhotoGalleryEN photos={artworks} col={col} />
         )}
       </Box>
     </>

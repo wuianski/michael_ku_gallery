@@ -19,6 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function EContentBlock({ useLang, e, index }) {
   // console.log(e);
+  const col = 2;
   return (
     <Box key={index}>
       {/* 1st row */}
@@ -47,7 +48,7 @@ export default function EContentBlock({ useLang, e, index }) {
         <Stack direction={{ xs: "column", sm: "row" }} spacing={10}>
           {/* Artworks */}
           <Item sx={{ width: { xs: "100%", sm: "50%" } }}>
-            <Artworks artworks={e.artworks} useLang={useLang} />
+            <Artworks artworks={e.artworks} useLang={useLang} col={col} />
           </Item>
           {/* Exhibition Content */}
           <Item sx={{ width: { xs: "100%", sm: "50%" } }}>
