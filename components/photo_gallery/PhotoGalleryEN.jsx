@@ -40,13 +40,20 @@ export default function PhotoGalleryEN({ photos }) {
 
   const [index, setIndex] = useState(-1);
 
+  const gridColumns =
+    col === 2
+      ? "repeat(2, 1fr)"
+      : col === 4
+      ? "repeat(4, 1fr)"
+      : "repeat(2, 1fr)";
+
   return (
     <>
       <Box
         sx={{
           minHeight: "100vh",
           display: "grid",
-          gridTemplateColumns: { xs: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }, // default to 2 columns (mobile)
+          gridTemplateColumns: { xs: "repeat(2, 1fr)", md: gridColumns },
           gap: "30px",
         }}
       >

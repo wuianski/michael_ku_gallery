@@ -48,6 +48,7 @@ export default function PhotoGalleryTW({ photos, col }) {
       : col === 4
       ? "repeat(4, 1fr)"
       : "repeat(2, 1fr)";
+
   return (
     <>
       <Box
