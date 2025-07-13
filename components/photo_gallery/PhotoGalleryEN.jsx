@@ -10,7 +10,7 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import Image from "next/image";
 import { Box } from "@mui/material";
 
-export default function PhotoGalleryEN({ photos }) {
+export default function PhotoGalleryEN({ photos, col }) {
   //   console.log(photos);
   const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
   const myphotos = photos.map((photo, index) => ({
