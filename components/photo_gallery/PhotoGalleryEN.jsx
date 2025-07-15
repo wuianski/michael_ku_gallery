@@ -6,6 +6,7 @@ import LightBoxNextJsImage from "@/components/photo_gallery/LightBoxNextJsImage"
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 import Image from "next/image";
 import { Box } from "@mui/material";
@@ -13,6 +14,8 @@ import { Box } from "@mui/material";
 export default function PhotoGalleryEN({ photos, col }) {
   //   console.log(photos);
   const breakpoints = [1080, 640, 384, 256, 128, 96, 64, 48];
+  const imageSizes = [16, 32, 48, 64, 96, 128, 256, 384];
+  const deviceSizes = [640, 750, 828, 1080, 1200, 1920, 2048, 3840];
   const myphotos = photos.map((photo, index) => ({
     src: `${process.env.DIRECTUS_URL}/assets/${photo.artworks_id.image.filename_disk}`,
     width: photo.artworks_id.image.width,
@@ -22,19 +25,31 @@ export default function PhotoGalleryEN({ photos, col }) {
       ? `${photo.artworks_id.caption_en.replace(/<[^>]+>/g, "")}`
       : null,
     index: index,
-    srcSet: breakpoints.map((breakpoint) => {
-      const height = Math.round(
-        (photo.artworks_id.image.height / photo.artworks_id.image.width) *
-          breakpoint
-      );
-      return {
+    // srcSet: breakpoints.map((breakpoint) => {
+    //   const height = Math.round(
+    //     (photo.artworks_id.image.height / photo.artworks_id.image.width) *
+    //       breakpoint
+    //   );
+    //   return {
+    //     src: `${process.env.DIRECTUS_URL}/assets/${photo.artworks_id.image.filename_disk}`,
+    //     width: breakpoints,
+    //     height,
+    //     title_en: `${photo.artworks_id.title_en}`,
+    //     index: index,
+    //   };
+    // }),
+
+    /* with zoom plugin in Lightbox */
+    srcSet: [...imageSizes, ...deviceSizes]
+      .filter((size) => size <= photo.artworks_id.image.width)
+      .map((size) => ({
         src: `${process.env.DIRECTUS_URL}/assets/${photo.artworks_id.image.filename_disk}`,
-        width: breakpoints,
-        height,
-        title_en: `${photo.artworks_id.title_en}`,
-        index: index,
-      };
-    }),
+        width: size,
+        height: Math.round(
+          (photo.artworks_id.image.height / photo.artworks_id.image.width) *
+            size
+        ),
+      })),
   }));
   //   console.log(myphotos);
 
@@ -100,7 +115,7 @@ export default function PhotoGalleryEN({ photos, col }) {
         index={index}
         close={() => setIndex(-1)}
         // enable optional lightbox plugins
-        plugins={[Captions]}
+        plugins={[Zoom, Captions]}
         render={{ slide: LightBoxNextJsImage }}
         styles={{ container: { backgroundColor: "rgba(255, 255, 255, 1)" } }}
         className="en_font"
