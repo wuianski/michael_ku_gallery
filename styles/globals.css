@@ -33,6 +33,7 @@ a {
 .yarl__slide_description {
   color: #000 !important;
   font-size: 12px !important;
+  text-align: center !important;
 }
 .yarl__button {
   color: #000 !important;

@@ -54,7 +54,7 @@ export default function PhotoGalleryEN({ photos, col }) {
           minHeight: "100vh",
           display: "grid",
           gridTemplateColumns: { xs: "repeat(2, 1fr)", md: gridColumns },
-          gap: "30px",
+          gap: { xs: "30px", md: "60px" },
         }}
       >
         {myphotos.map((photo, idx) => (
