@@ -125,7 +125,7 @@ export default function PhotoGalleryTW({ photos, col }) {
           container: {
             backgroundColor: "rgba(255, 255, 255, 1)",
             letterSpacing: "0.88px",
-            fontFamily: `var(--font-noto-serif-tc), serif`,
+            fontFamily: `serif`,
           },
           root: {
             "--yarl__slide_description_color": "rgba(0, 0, 0, .8)",

@@ -130,7 +130,7 @@ export default function PhotoGalleryEN({ photos, col }) {
           container: {
             backgroundColor: "rgba(255, 255, 255, 1)",
             letterSpacing: "0.88px",
-            fontFamily: `var(--font-baskervville), serif`,
+            fontFamily: `serif`,
           },
           root: {
             "--yarl__slide_description_color": "rgba(0, 0, 0, .8)",
