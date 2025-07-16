@@ -71,7 +71,7 @@ export default function PhotoGalleryTW({ photos, col }) {
           minHeight: "100vh",
           display: "grid",
           gridTemplateColumns: { xs: "repeat(2, 1fr)", md: gridColumns },
-          gap: { xs: "30px", md: "60px" },
+          gap: { xs: "60px", md: "60px" },
         }}
       >
         {myphotos.map((photo, idx) => (
@@ -104,7 +104,11 @@ export default function PhotoGalleryTW({ photos, col }) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
             />
             <div style={{ padding: "8px 0", textAlign: "center" }}>
-              <div style={{ fontWeight: "normal" }}>{photo.title_tw}</div>
+              <div
+                style={{ fontStyle: "normal", paddingTop: 20, color: "#666" }}
+              >
+                {photo.title_tw}
+              </div>
             </div>
           </div>
         ))}
