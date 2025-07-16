@@ -109,6 +109,7 @@ export default function PhotoGalleryEN({ photos, col }) {
                   paddingTop: 20,
                   color: "#666",
                 }}
+                className="en_font"
               >
                 {photo.title_en}
               </div>
@@ -125,8 +126,16 @@ export default function PhotoGalleryEN({ photos, col }) {
         // enable optional lightbox plugins
         plugins={[Zoom, Captions]}
         render={{ slide: LightBoxNextJsImage }}
-        styles={{ container: { backgroundColor: "rgba(255, 255, 255, 1)" } }}
-        className="en_font"
+        styles={{
+          container: {
+            backgroundColor: "rgba(255, 255, 255, 1)",
+            letterSpacing: "0.88px",
+            fontFamily: `var(--font-baskervville), serif`,
+          },
+          root: {
+            "--yarl__slide_description_color": "rgba(0, 0, 0, .8)",
+          },
+        }}
       />
     </>
   );

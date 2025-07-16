@@ -106,6 +106,7 @@ export default function PhotoGalleryTW({ photos, col }) {
             <div style={{ padding: "8px 0", textAlign: "center" }}>
               <div
                 style={{ fontStyle: "normal", paddingTop: 20, color: "#666" }}
+                className="tw_font"
               >
                 {photo.title_tw}
               </div>
@@ -120,8 +121,16 @@ export default function PhotoGalleryTW({ photos, col }) {
         close={() => setIndex(-1)}
         plugins={[Zoom, Captions]}
         render={{ slide: LightBoxNextJsImage }}
-        styles={{ container: { backgroundColor: "rgba(255, 255, 255, 1)" } }}
-        className="tw_font"
+        styles={{
+          container: {
+            backgroundColor: "rgba(255, 255, 255, 1)",
+            letterSpacing: "0.88px",
+            fontFamily: `var(--font-noto-serif-tc), serif`,
+          },
+          root: {
+            "--yarl__slide_description_color": "rgba(0, 0, 0, .8)",
+          },
+        }}
       />
     </>
   );

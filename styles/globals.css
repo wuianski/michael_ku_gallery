@@ -31,7 +31,7 @@ a {
   background: none !important;
 }
 .yarl__slide_description {
-  color: #000 !important;
+  /* color: #000 !important; */
   font-size: 12px !important;
   text-align: center !important;
 }
