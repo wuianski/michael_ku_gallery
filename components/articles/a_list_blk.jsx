@@ -45,11 +45,39 @@ export default function AListBlock({ useLang, articles }) {
                           {useLang ? (
                             <>
                               <Box
+                                sx={{ fontWeight: 500 }}
+                                pb={1}
+                                className="tw_font"
+                              >
+                                {article.title_tw}
+                              </Box>
+
+                              <Box
+                                sx={{ fontSize: 12, fontWeight: 500 }}
+                                pb={1}
+                                className="tw_font"
+                              >
+                                文 / {article.writer_tw}
+                              </Box>
+
+                              <Box sx={{ fontSize: 12, color: "#666" }}>
+                                <Box>
+                                  {(() => {
+                                    const date = new Date(article.date);
+                                    return `${date.getFullYear()}年${
+                                      date.getMonth() + 1
+                                    }月`;
+                                  })()}
+                                </Box>
+                                <Box className="tw_font">詳情</Box>
+                              </Box>
+
+                              <Box
                                 sx={{
-                                  fontSize: { xs: 14, sm: 14 },
+                                  fontSize: { xs: 12, sm: 14 },
                                   fontWeight: 500,
                                 }}
-                                pb={1}
+                                pt={1}
                               >
                                 <ArtistsNameTW artists={article.artists} />
                                 {article.artists.length === 0 ? (
@@ -61,45 +89,9 @@ export default function AListBlock({ useLang, articles }) {
                                   </Box>
                                 ) : null}
                               </Box>
-                              <Box
-                                sx={{ fontWeight: 500 }}
-                                pb={1}
-                                className="tw_font"
-                              >
-                                {article.title_tw}
-                              </Box>
-
-                              <Box
-                                sx={{
-                                  fontSize: 12,
-                                  fontWeight: 400,
-                                }}
-                                pb={1}
-                                className="tw_font"
-                              >
-                                撰文 / {article.writer_tw}
-                              </Box>
-
-                              <Box sx={{ fontSize: 12, color: "#666" }}>
-                                <Box>
-                                  {new Date(article.date).toLocaleDateString()}
-                                </Box>
-                                <Box className="tw_font">詳情</Box>
-                              </Box>
                             </>
                           ) : (
                             <>
-                              <Box>
-                                <ArtistsNameEN artists={article.artists} />
-                                {article.artists.length === 0 ? (
-                                  <Box
-                                    className="en_font"
-                                    sx={{ fontWeight: 500 }}
-                                  >
-                                    Michael Ku Gallery
-                                  </Box>
-                                ) : null}
-                              </Box>
                               <Box
                                 sx={{ fontWeight: 500 }}
                                 pb={1}
@@ -109,21 +101,41 @@ export default function AListBlock({ useLang, articles }) {
                               </Box>
 
                               <Box
-                                sx={{
-                                  fontSize: 12,
-                                  fontWeight: 400,
-                                }}
+                                sx={{ fontSize: 12, fontWeight: 500 }}
                                 pb={1}
                                 className="en_font"
                               >
-                                撰文 / {article.writer_en}
+                                by {article.writer_en}
                               </Box>
 
                               <Box sx={{ fontSize: 12, color: "#666" }}>
                                 <Box>
-                                  {new Date(article.date).toLocaleDateString()}
+                                  {(() => {
+                                    const date = new Date(article.date);
+                                    return `${date.getFullYear()}年${
+                                      date.getMonth() + 1
+                                    }月`;
+                                  })()}
                                 </Box>
                                 <Box className="en_font">More</Box>
+                              </Box>
+
+                              <Box
+                                sx={{
+                                  fontSize: { xs: 12, sm: 14 },
+                                  fontWeight: 500,
+                                }}
+                                pt={1}
+                              >
+                                <ArtistsNameEN artists={article.artists} />
+                                {article.artists.length === 0 ? (
+                                  <Box
+                                    className="en_font"
+                                    sx={{ fontWeight: 500 }}
+                                  >
+                                    Michael Ku Gallery
+                                  </Box>
+                                ) : null}
                               </Box>
                             </>
                           )}
