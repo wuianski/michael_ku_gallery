@@ -135,23 +135,38 @@ export default function Articles({ useLang, articles }) {
         (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
       );
 
+  const noEnglisgContent =
+    !useLang && articles.articles.some((article) => !article.writer_en);
+
   return (
     <>
       <Container maxWidth="lg">
-        <Box
-          p={2}
-          // className="tw_font"
-          sx={{
-            width: { xs: "100%", sm: "50%" },
-            fontSize: { xs: "18px", sm: "14px" },
-            fontWeight: 400,
-            letterSpacing: "0.88px",
-            lineHeight: { xs: "1.5", sm: "1.5" },
-          }}
-        >
-          <AListBlock articles={articles.articles} useLang={useLang} />
-        </Box>
-        {/* </motion.div> */}
+        {!noEnglisgContent ? (
+          <Box
+            p={2}
+            sx={{
+              width: { xs: "100%", sm: "50%" },
+              fontSize: { xs: "18px", sm: "14px" },
+              fontWeight: 400,
+              letterSpacing: "0.88px",
+              lineHeight: { xs: "1.5", sm: "1.5" },
+            }}
+          >
+            <AListBlock articles={articles.articles} useLang={useLang} />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              fontSize: 16,
+              color: "#888",
+              py: 4,
+              textAlign: "center",
+              width: "100% !important",
+            }}
+          >
+            We apologize, but the English content is currently unavailable.
+          </Box>
+        )}
       </Container>
     </>
   );

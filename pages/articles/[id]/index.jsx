@@ -86,6 +86,8 @@ export async function getServerSideProps({ params }) {
                 }
               }
             },
+            writer_tw,
+            writer_en,
           }
       }
       `,

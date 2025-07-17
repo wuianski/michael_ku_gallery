@@ -17,6 +17,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AListBlock({ useLang, articles }) {
   const willChange = useWillChange();
+  const noEnglisgContent =
+    !useLang && articles.some((article) => !article.writer_en);
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -28,7 +30,7 @@ export default function AListBlock({ useLang, articles }) {
         >
           {articles.map((article, index) => {
             /* !!!Show if useLang is true, or if useLang is false and writer_en exists */
-            if (useLang || (!useLang && article.writer_en)) {
+            if (!noEnglisgContent) {
               return (
                 <Grid item xs={12} md={6} key={index}>
                   <Item>
